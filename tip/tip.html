@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+        <title>Tip Calculator</title>
+        <link href="https://fonts.googleapis.com/css?family=Roboto:500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <h1>Tip Calculator</h1>
+
+    <div class="container">
+
+      <h3>How much was your bill?</h3>
+      <input class="bill" value= 2 type="number" name="" placeholder="Add a number">
+
+      <h3>How was the service?</h3>
+        <select class="service" name="">
+          <option value="0.3"> Excellent</option>
+          <option value="0.2"> Good</option>
+          <option value="0.15"> Regular</option>
+          <option value="0.10"> Bad</option>
+      </select>
+
+      <h3>How many people ate?</h3>
+      <input class="people" type="number" name="" placeholder="Add a number">
+
+      <button class="btn btn-info"> Calculate</button>
+      <div class="total"></div>
+
+    </div>
+
+
+    <script src="script.js">
+
+    </script>
+  </body>
+</html>
