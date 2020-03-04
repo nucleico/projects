@@ -20,10 +20,11 @@ startGame();
 
 function startGame() {
   turnX = true;
-  mensaje.style.display = 'none';
+  mensaje.innerText = '';
   cell.forEach(cell => {
     cell.classList.remove(x);
     cell.classList.remove(o);
+    cell.classList.remove('ganadora');
     cell.addEventListener('click', hacerClick, { once: true });
   });
   restartBtn.addEventListener('click', startGame);
@@ -37,15 +38,30 @@ function victoria(clase) {
   });
 }
 
+function encontrarCombinacionGanadora(clase) {
+  return combinaciones.find(combinacion => {
+    return combinacion.every(ind => {
+      return cell[ind].classList.contains(clase);
+    });
+  });
+}
+
 function hacerClick(e) {
   const cellElegida = e.target;
   let claseActual = turnX ? x : o;
-  marcar(cellElegida, claseActual);
+  marcarCelda(cellElegida, claseActual);
+
   if (victoria(claseActual)) {
-    mensaje.style.display = 'block';
+    mensaje.innerText = `Gana el que maneja ${claseActual.toUpperCase()}!`;
     cell.forEach(cell => {
       cell.removeEventListener('click', hacerClick);
     });
+    let combinacionGanadora = encontrarCombinacionGanadora(claseActual);
+    for (i = 0; i < combinacionGanadora.length; i++) {
+      cell[combinacionGanadora[i]].classList.add('ganadora');
+    }
+  } else if (empate()) {
+    mensaje.innerText = 'Empate!';
   } else {
     cambiarTurno();
   }
@@ -55,6 +71,12 @@ function cambiarTurno() {
   turnX = !turnX;
 }
 
-function marcar(cell, claseActual) {
+function marcarCelda(cell, claseActual) {
   cell.classList.add(claseActual);
+}
+
+function empate() {
+  return [...cell].every(
+    celda => celda.classList.contains(x) || celda.classList.contains(o)
+  );
 }
