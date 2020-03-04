@@ -4,12 +4,12 @@
 }
 
 html body {
-  background: #04A1BF;
+  background: #04a1bf;
   font-family: 'Solway', sans-serif;
-  }
+}
 
 p {
-  text-align: center
+  text-align: center;
 }
 
 .title {
@@ -24,7 +24,7 @@ p {
 }
 
 .container {
-    text-align: center;
+  text-align: center;
 }
 
 .inputText {
@@ -33,15 +33,15 @@ p {
   border-radius: 5px;
   height: 20px;
   font-family: Calibri;
-  -webkit-box-shadow: 3px 4px 31px -6px rgba(0,0,0,0.75);
-  -moz-box-shadow: 3px 4px 31px -6px rgba(0,0,0,0.75);
-  box-shadow: 3px 4px 31px -6px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 3px 4px 31px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 4px 31px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 4px 31px -6px rgba(0, 0, 0, 0.75);
 }
 
 .redField {
-  -webkit-box-shadow: -2px 3px 28px 7px rgba(219,76,76,1);
-  -moz-box-shadow: -2px 3px 28px 7px rgba(219,76,76,1);
-  box-shadow: -2px 3px 28px 7px rgba(219,76,76,1);
+  -webkit-box-shadow: -2px 3px 28px 7px rgba(219, 76, 76, 1);
+  -moz-box-shadow: -2px 3px 28px 7px rgba(219, 76, 76, 1);
+  box-shadow: -2px 3px 28px 7px rgba(219, 76, 76, 1);
 }
 
 #enter {
@@ -66,12 +66,12 @@ li {
   background-color: white;
   border-radius: 5px;
   margin-bottom: 2px;
-  -webkit-box-shadow: 3px 4px 31px -6px rgba(0,0,0,0.75);
-  -moz-box-shadow: 3px 4px 31px -6px rgba(0,0,0,0.75);
-  box-shadow: 3px 4px 31px -6px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 3px 4px 31px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 3px 4px 31px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 3px 4px 31px -6px rgba(0, 0, 0, 0.75);
 }
 
-li:nth-of-type(even){
+li:nth-of-type(even) {
   background-color: grey;
 }
 
@@ -80,7 +80,7 @@ i {
 }
 
 .delete {
-	display: none;
+  display: none;
 }
 
 li > button {
