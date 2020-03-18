@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@mixin positionCenter {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+$cellHeight: 80px;
+$imgWidth: 60px;
+$backgroundColor: blue;
+$fontRoboto: Roboto, Arial, Helvetica, sans-serif;
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+h4 {
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  font-family: $fontRoboto;
+}
+
+.navBar {
+  background-color: #f7f5f4;
+  padding: 5px;
+  display: flex;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.card {
+  width: 250px;
+  margin: 10px;
+  height: 300px;
+  font-size: 8px;
+  border: 1px solid black;
+  position: relative;
+  cursor: pointer;
+  .name {
+    position: absolute;
+    color: white;
+    text-align: right;
+    bottom: 0;
+    right: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 2px 2px 12px #000000;
+  }
+  .personajeImg {
+    width: 250px;
+    height: 100%;
+  }
+}
+
+.card:hover {
+  opacity: 0.8;
+  border: 1px solid lightseagreen;
+}
+.marvelLogo {
+  width: 50px;
+  margin: 5px;
+}
+
+#lineNavBar {
+  height: 25px;
+  margin-left: 20px;
+  border: 1px solid grey;
+}
+
+.searchBar {
+  background-color: transparent;
+}
+
+#searchInput {
+  background-color: #e7e6e6;
+  border: none;
+  height: 20px;
+  outline: none;
+  margin-left: 10px;
+  margin-top: 3px;
+  padding-left: 3px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.searchIcon {
+  margin-left: -20px;
+}
+
+.noResults {
+  font-size: 55px;
+  font-weight: bold;
+  margin-left: 25%;
+  margin-top: 20%;
+}
+
+.comicContainer {
+  width: 350px;
+  height: 350px;
+  background-color: grayscale($color: #c5c0c0);
+  border: 1px solid black;
+  @include positionCenter;
+  overflow: auto;
+  display: flex;
+  padding: 25px;
+  position: fixed;
+  @include scrollbar;
+}
+
+.comicList {
+  padding: 20px;
+}
+
+.tituloComic {
+  font-size: 15px;
+  margin-bottom: 50px;
+  margin-top: 25px;
+  font-family: $fontRoboto;
+}
+
+table {
+  margin-top: 25px;
+}
+
+.imagenComic {
+  height: 75px;
+  width: $imgWidth;
+  margin-right: 10px;
+  -webkit-box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+}
+
+.imagenComic:hover {
+  opacity: 0.8;
+}
+
+.comicTable {
+  height: $cellHeight;
+}
+
+.imgTable {
+  height: $cellHeight;
+}
+
+#comicWord {
+  position: absolute;
+  top: 10px;
+  left: 80px;
+  font-family: $fontRoboto;
+}
+
+button {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.noResultsComics {
+  position: absolute;
+  top: 175px;
+  font-family: $fontRoboto;
+}
+
+.fade-appear {
+  opacity: 0;
+  transform: translate(0, -10px);
+}
+.fade-appear-active {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: all 300s ease-in;
+}
+
+.fade-enter {
+  opacity: 0;
+  transform: translate(0, -10px);
+}
+.fade-enter-active {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: all 300s ease-in;
+}
+
+@media only screen and (max-width: 600px) {
+  .comicContainer {
+    width: 250px;
+    height: 250px;
+  }
+  #comicWord {
+    font-size: 20px;
+    left: 55px;
+  }
+  .noResultsComics {
+    top: 100px;
+  }
+}
