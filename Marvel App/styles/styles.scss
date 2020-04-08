@@ -112,25 +112,16 @@ h4 {
   border: 1px solid black;
   @include positionCenter;
   overflow: auto;
-  display: flex;
   padding: 25px;
   position: fixed;
-  @include scrollbar;
 }
 
-.comicList {
-  padding: 20px;
-}
-
-.tituloComic {
-  font-size: 15px;
-  margin-bottom: 50px;
-  margin-top: 25px;
-  font-family: $fontRoboto;
+.comicListContainer {
+  display: flex;
 }
 
 table {
-  margin-top: 25px;
+  margin-top: 35px;
 }
 
 .imagenComic {
@@ -148,6 +139,10 @@ table {
 
 .comicTable {
   height: $cellHeight;
+  font-size: 15px;
+  margin-bottom: 50px;
+  margin-top: 25px;
+  font-family: $fontRoboto;
 }
 
 .imgTable {
@@ -176,26 +171,6 @@ button {
   position: absolute;
   top: 175px;
   font-family: $fontRoboto;
-}
-
-.fade-appear {
-  opacity: 0;
-  transform: translate(0, -10px);
-}
-.fade-appear-active {
-  opacity: 1;
-  transform: translate(0, 0);
-  transition: all 300s ease-in;
-}
-
-.fade-enter {
-  opacity: 0;
-  transform: translate(0, -10px);
-}
-.fade-enter-active {
-  opacity: 1;
-  transform: translate(0, 0);
-  transition: all 300s ease-in;
 }
 
 @media only screen and (max-width: 600px) {

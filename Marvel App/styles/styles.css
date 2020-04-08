@@ -112,39 +112,18 @@ h4 {
   left: 0;
   right: 0;
   overflow: auto;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   padding: 25px;
   position: fixed;
 }
 
-.comicContainer body::-webkit-scrollbar {
-  width: 1em;
-}
-
-.comicContainer body::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-}
-
-.comicContainer body::-webkit-scrollbar-thumb {
-  background-color: darkgrey;
-  outline: 1px solid slategrey;
-}
-
-.comicList {
-  padding: 20px;
-}
-
-.tituloComic {
-  font-size: 15px;
-  margin-bottom: 50px;
-  margin-top: 25px;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
+.comicListContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 table {
-  margin-top: 25px;
+  margin-top: 35px;
 }
 
 .imagenComic {
@@ -161,6 +140,10 @@ table {
 
 .comicTable {
   height: 80px;
+  font-size: 15px;
+  margin-bottom: 50px;
+  margin-top: 25px;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
 }
 
 .imgTable {
