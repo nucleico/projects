@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Girassol&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bitter&display=swap');
 @mixin positionCenter {
   position: absolute;
   margin: auto;
@@ -98,6 +100,27 @@ h4 {
   margin-left: -20px;
 }
 
+.favIcon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  color: rgb(218, 189, 28);
+}
+
+.favList {
+  position: absolute;
+  right: 15px;
+  top: 3px;
+  font-size: 25px;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+.favList:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
 .noResults {
   font-size: 55px;
   font-weight: bold;
@@ -106,14 +129,26 @@ h4 {
 }
 
 .comicContainer {
-  width: 350px;
-  height: 350px;
-  background-color: grayscale($color: #c5c0c0);
-  border: 1px solid black;
+  width: 450px;
+  height: 450px;
+  background-color: whitesmoke;
+  border: 1px solid rgb(213, 231, 219);
   @include positionCenter;
   overflow: auto;
   padding: 25px;
   position: fixed;
+}
+
+.favContainer {
+  width: 450px;
+  height: 450px;
+  background-color: whitesmoke;
+  border: 1px solid rgb(213, 231, 219);
+  @include positionCenter;
+  overflow: auto;
+  padding: 25px;
+  position: fixed;
+  z-index: 2;
 }
 
 .comicListContainer {
@@ -121,7 +156,7 @@ h4 {
 }
 
 table {
-  margin-top: 35px;
+  margin-top: 33px;
 }
 
 .imagenComic {
@@ -139,21 +174,23 @@ table {
 
 .comicTable {
   height: $cellHeight;
-  font-size: 15px;
-  margin-bottom: 50px;
-  margin-top: 25px;
-  font-family: $fontRoboto;
+  font-size: 17px;
+  font-family: Bitter, Helvetica, sans-serif;
 }
 
 .imgTable {
   height: $cellHeight;
+  margin-top: 35px;
 }
 
 #comicWord {
-  position: absolute;
-  top: 10px;
-  left: 80px;
-  font-family: $fontRoboto;
+  text-align: center;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+#favWord {
+  text-align: center;
+  font-family: Girassol, Helvetica, sans-serif;
 }
 
 button {
@@ -170,7 +207,7 @@ button {
 .noResultsComics {
   position: absolute;
   top: 175px;
-  font-family: $fontRoboto;
+  font-family: Girassol;
 }
 
 @media only screen and (max-width: 600px) {

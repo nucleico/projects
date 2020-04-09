@@ -16,12 +16,13 @@ class App extends Component {
       comicTitle: [],
       comicImg: [],
       toggleComic: false,
+      favCharacters: [],
+      favCharacterImg: [],
+      favListToggle: false,
     };
-    this.getComics = this.getComics.bind(this);
-    this.getCharacter = this.getCharacter.bind(this);
   }
 
-  async getCharacter(query) {
+  getCharacter = async (query) => {
     if (query) {
       try {
         const response = await axios.get(
@@ -52,9 +53,9 @@ class App extends Component {
         personajeImg: [],
       });
     }
-  }
+  };
 
-  async getComics(characterId) {
+  getComics = async (characterId) => {
     try {
       const response = await axios.get(
         `https://gateway.marvel.com/v1/public/characters/${characterId}/comics?ts=1&apikey=6f44abf169878c0d274e18fd74271fe3&hash=e08061f3544ab0998b879bc0db6d4a01`
@@ -81,7 +82,7 @@ class App extends Component {
     } catch (error) {
       console.error(error);
     }
-  }
+  };
 
   eraseData = () => {
     this.setState({
@@ -92,20 +93,53 @@ class App extends Component {
     });
   };
 
+  addFavList = (ch, im) => {
+    this.setState({
+      favCharacters: [...this.state.favCharacters, ch],
+      favCharacterImg: [...this.state.favCharacterImg, im],
+    });
+  };
+
+  removeFavList = (ch, im) => {
+    const favCharactersUpdated = this.state.favCharacters.filter(
+      (item) => item !== ch
+    );
+    const favImgUpdated = this.state.favCharacterImg.filter(
+      (item) => item !== im
+    );
+
+    this.setState({
+      favCharacters: favCharactersUpdated,
+      favCharacterImg: favImgUpdated,
+    });
+  };
+
+  favListToggleFn = () => {
+    this.setState({
+      favListToggle: !this.state.favListToggle,
+    });
+  };
+
   render() {
     return (
       <div>
-        <SearchBar getCharacter={this.getCharacter} />
+        <SearchBar
+          favListToggleFn={this.favListToggleFn}
+          favListToggle={this.state.favListToggle}
+          getCharacter={this.getCharacter}
+          favCharacters={this.state.favCharacters}
+          favCharacterImg={this.state.favCharacterImg}
+        />
+
         <CardList
           personajeName={this.state.personajeName}
           personajeImg={this.state.personajeImg}
           characterId={this.state.characterId}
-          toggleComic={this.state.toggleComic}
-          comicImg={this.state.comicImg}
-          comicTitle={this.state.comicTitle}
-          eraseData={this.eraseData}
           getComics={this.getComics}
-          comicId={this.comicId}
+          removeFavList={this.removeFavList}
+          addFavList={this.addFavList}
+          favCharacters={this.state.favCharacters}
+          favCharacterImg={this.state.favCharacterImg}
         />
         {this.state.toggleComic ? (
           <ComicList

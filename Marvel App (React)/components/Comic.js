@@ -21,7 +21,7 @@ const Comic = (props) => {
       <table>
         <tbody>
           <tr>
-            <td className="comicTable">{comicTitle}</td>
+            <td className="comicTable">*{comicTitle}</td>
           </tr>
         </tbody>
       </table>

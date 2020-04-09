@@ -12,6 +12,10 @@ class CardList extends Component {
           getComics={() => getComics(characterId[i])}
           personajeImg={personajeImg[i]}
           key={characterId[i]}
+          addFavList={this.props.addFavList}
+          removeFavList={this.props.removeFavList}
+          favCharacters={this.props.favCharacters}
+          favCharacterImg={this.props.favCharacterImg}
         />
       );
     });

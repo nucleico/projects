@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Girassol&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bitter&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -93,6 +95,27 @@ h4 {
   margin-left: -20px;
 }
 
+.favIcon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  color: #dabd1c;
+}
+
+.favList {
+  position: absolute;
+  right: 15px;
+  top: 3px;
+  font-size: 25px;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+.favList:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
 .noResults {
   font-size: 55px;
   font-weight: bold;
@@ -101,10 +124,10 @@ h4 {
 }
 
 .comicContainer {
-  width: 350px;
-  height: 350px;
-  background-color: #c3c3c3;
-  border: 1px solid black;
+  width: 450px;
+  height: 450px;
+  background-color: whitesmoke;
+  border: 1px solid #d5e7db;
   position: absolute;
   margin: auto;
   top: 0;
@@ -116,6 +139,23 @@ h4 {
   position: fixed;
 }
 
+.favContainer {
+  width: 450px;
+  height: 450px;
+  background-color: whitesmoke;
+  border: 1px solid #d5e7db;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  padding: 25px;
+  position: fixed;
+  z-index: 2;
+}
+
 .comicListContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -123,7 +163,7 @@ h4 {
 }
 
 table {
-  margin-top: 35px;
+  margin-top: 33px;
 }
 
 .imagenComic {
@@ -140,21 +180,23 @@ table {
 
 .comicTable {
   height: 80px;
-  font-size: 15px;
-  margin-bottom: 50px;
-  margin-top: 25px;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  font-family: Bitter, Helvetica, sans-serif;
 }
 
 .imgTable {
   height: 80px;
+  margin-top: 35px;
 }
 
 #comicWord {
-  position: absolute;
-  top: 10px;
-  left: 80px;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
+  text-align: center;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+#favWord {
+  text-align: center;
+  font-family: Girassol, Helvetica, sans-serif;
 }
 
 button {
@@ -171,7 +213,7 @@ button {
 .noResultsComics {
   position: absolute;
   top: 175px;
-  font-family: Roboto, Arial, Helvetica, sans-serif;
+  font-family: Girassol;
 }
 
 @media only screen and (max-width: 600px) {
