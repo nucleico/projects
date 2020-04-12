@@ -60,7 +60,7 @@ h4 {
 }
 
 .card:hover {
-  opacity: 0.8;
+  opacity: 0.9;
   border: 1px solid lightseagreen;
 }
 
@@ -213,7 +213,38 @@ button {
 .noResultsComics {
   position: absolute;
   top: 175px;
-  font-family: Girassol;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+.statsContainer {
+  width: 252px;
+  height: 100px;
+  background-color: #2e2424;
+  position: absolute;
+  bottom: -1px;
+  left: -1px;
+}
+
+.statsAtt {
+  font-size: 12px;
+  padding: 15px;
+  color: #dbd5d5;
+  font-family: Bitter, Helvetica, sans-serif;
+}
+
+.attrBar {
+  height: 10px;
+  width: 100px;
+  border: 1px solid black;
+  float: right;
+  margin-top: 5px;
+}
+
+.pointsBar {
+  height: 8px;
+  margin-top: 1px;
+  margin-left: 1px;
+  background-color: #cf0711;
 }
 
 @media only screen and (max-width: 600px) {

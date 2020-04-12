@@ -3,11 +3,18 @@ import '../styles/styles.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as heartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as heartSolid } from '@fortawesome/free-solid-svg-icons';
+import Stats from './Stats';
 
 class Card extends Component {
   constructor(props) {
     super(props);
-    this.state = { toggleFav: false };
+    this.state = {
+      toggleFav: false,
+      toggleStats: false,
+      powerPoints: Math.ceil(Math.random() * 98),
+      speedPoints: Math.ceil(Math.random() * 98),
+      resPoints: Math.ceil(Math.random() * 98),
+    };
   }
 
   makeFav = (e) => {
@@ -23,10 +30,27 @@ class Card extends Component {
     }
   };
 
+  openStats = () => {
+    this.setState({
+      toggleStats: true,
+    });
+  };
+
+  closeStats = () => {
+    this.setState({
+      toggleStats: false,
+    });
+  };
+
   render() {
     const { personajeName, personajeImg, getComics } = this.props;
     return (
-      <div onClick={getComics} className="card">
+      <div
+        onClick={getComics}
+        onMouseEnter={this.openStats}
+        onMouseLeave={this.closeStats}
+        className="card"
+      >
         {this.state.toggleFav ? (
           <FontAwesomeIcon
             icon={heartSolid}
@@ -41,6 +65,15 @@ class Card extends Component {
           />
         )}
         <h1 className="name">{personajeName}</h1>
+        {this.state.toggleStats ? (
+          <Stats
+            powerPoints={this.state.powerPoints}
+            speedPoints={this.state.speedPoints}
+            resPoints={this.state.resPoints}
+          />
+        ) : (
+          ''
+        )}
         <img className="personajeImg" src={personajeImg} alt="personaje"></img>
       </div>
     );
