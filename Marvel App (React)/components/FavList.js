@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class FavList extends Component {
   render() {
-    console.log(this.props);
     return (
       <div className="comicListContainer" draggable="true">
         <table>
@@ -21,7 +20,7 @@ class FavList extends Component {
         <table>
           <tbody>
             <tr>
-              <td className="comicTable">{this.props.favCharacters}</td>
+              <td className="comicTable">{this.props.favCharacters} </td>
             </tr>
           </tbody>
         </table>

@@ -28,6 +28,9 @@ h4 {
 }
 
 .navBar {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
   background-color: #f7f5f4;
   padding: 5px;
   display: flex;
@@ -37,6 +40,7 @@ h4 {
 }
 
 .grid {
+  padding-top: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -114,6 +118,15 @@ h4 {
   top: 3px;
   font-size: 25px;
   font-family: Girassol, Helvetica, sans-serif;
+}
+
+.clickForInfoTxt {
+  position: absolute;
+  right: 145px;
+  top: 8px;
+  font-family: Girassol, Helvetica, sans-serif;
+  font-size: 18px;
+  margin-left: 100px;
 }
 
 .favList:hover {
@@ -217,10 +230,10 @@ button {
   position: absolute;
   bottom: -1px;
   left: -1px;
+  font-size: 12px;
 }
 
 .statsAtt {
-  font-size: 12px;
   padding: 15px;
   color: rgb(219, 213, 213);
   font-family: Bitter, Helvetica, sans-serif;
@@ -239,6 +252,12 @@ button {
   margin-top: 1px;
   margin-left: 1px;
   background-color: rgb(207, 7, 17);
+}
+
+.statsContainer:hover {
+  height: 105px;
+  transition: all 500ms ease;
+  font-size: 13px;
 }
 
 @media only screen and (max-width: 600px) {

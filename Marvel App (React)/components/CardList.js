@@ -16,6 +16,7 @@ class CardList extends Component {
           removeFavList={this.props.removeFavList}
           favCharacters={this.props.favCharacters}
           favCharacterImg={this.props.favCharacterImg}
+          toggleFav={this.props.toggleFav}
         />
       );
     });

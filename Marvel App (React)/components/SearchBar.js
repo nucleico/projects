@@ -15,6 +15,7 @@ class SearchBar extends Component {
         <FavList
           favCharacters={this.props.favCharacters[i]}
           favCharacterImg={this.props.favCharacterImg[i]}
+          removeFavList={this.props.removeFavList}
         />
       );
     });
@@ -33,6 +34,9 @@ class SearchBar extends Component {
           />
           <FontAwesomeIcon icon={faSearch} className="searchIcon" />
         </form>
+        <h2 className="clickForInfoTxt">
+          Click each card for comic appearances!
+        </h2>
         <h3 className="favList" onClick={this.props.favListToggleFn}>
           Favourites
         </h3>

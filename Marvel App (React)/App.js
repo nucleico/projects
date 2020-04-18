@@ -19,6 +19,7 @@ class App extends Component {
       favCharacters: [],
       favCharacterImg: [],
       favListToggle: false,
+      toggleFav: false,
     };
   }
 
@@ -129,6 +130,7 @@ class App extends Component {
           getCharacter={this.getCharacter}
           favCharacters={this.state.favCharacters}
           favCharacterImg={this.state.favCharacterImg}
+          removeFavList={this.removeFavList}
         />
 
         <CardList
