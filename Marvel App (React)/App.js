@@ -4,8 +4,10 @@ import CardList from './components/CardList';
 import ComicList from './components/ComicList';
 import SearchBar from './components/SearchBar';
 import axios from 'axios';
+import { ThemeContext } from './context/ThemeContext';
 
 class App extends Component {
+  static contextType = ThemeContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -122,6 +124,10 @@ class App extends Component {
   };
 
   render() {
+    const { isLightTheme, light, dark } = this.context;
+    const theme = isLightTheme ? light : dark;
+    document.body.style.backgroundColor = theme.back;
+
     return (
       <div>
         <SearchBar
@@ -152,7 +158,9 @@ class App extends Component {
         ) : (
           ''
         )}
-        <h4>Data provided by Marvel. © 2014 Marvel.</h4>
+        <h4 style={{ color: theme.letter }}>
+          Data provided by Marvel. © 2014 Marvel.
+        </h4>
       </div>
     );
   }

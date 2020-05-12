@@ -107,6 +107,14 @@ h4 {
   color: #dabd1c;
 }
 
+.themeBtn {
+  margin-left: 15px;
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-family: Bitter, sans-serif;
+}
+
 .favList {
   position: absolute;
   right: 15px;
@@ -212,7 +220,7 @@ table {
   font-family: Girassol, Helvetica, sans-serif;
 }
 
-button {
+.xBtn {
   width: 25px;
   height: 25px;
   position: absolute;

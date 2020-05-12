@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import Comic from './Comic';
 import NoResults from './NoResults';
+import { ThemeContext } from '../context/ThemeContext';
 
 class ComicList extends Component {
+  static contextType = ThemeContext;
   render() {
     const { comicTitle, comicImg, eraseData } = this.props;
+    const { isLightTheme, light, dark } = this.context;
+    const theme = isLightTheme ? light : dark;
 
     const comicComponent = comicTitle.map((el, i) => {
       return (
@@ -18,9 +22,20 @@ class ComicList extends Component {
     });
 
     return (
-      <div className="comicContainer">
-        <h2 id="comicWord">Comic Appeareances</h2>
-        <button onClick={eraseData}>X</button>{' '}
+      <div
+        style={{ backgroundColor: theme.comicBack }}
+        className="comicContainer"
+      >
+        <h2 style={{ color: theme.letter }} id="comicWord">
+          Comic Appeareances
+        </h2>
+        <button
+          style={{ color: theme.letter }}
+          className="xBtn"
+          onClick={eraseData}
+        >
+          X
+        </button>{' '}
         {comicComponent.length > 0 ? (
           comicComponent
         ) : (

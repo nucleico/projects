@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import { ThemeContext } from '../context/ThemeContext';
 
 class FavList extends Component {
+  static contextType = ThemeContext;
   render() {
+    const { isLightTheme, light, dark } = this.context;
+    const theme = isLightTheme ? light : dark;
     return (
       <div className="comicListContainer" draggable="true">
         <table>
@@ -20,7 +24,9 @@ class FavList extends Component {
         <table>
           <tbody>
             <tr>
-              <td className="comicTable">{this.props.favCharacters} </td>
+              <td style={{ color: theme.letter }} className="comicTable">
+                {this.props.favCharacters}{' '}
+              </td>
             </tr>
           </tbody>
         </table>
