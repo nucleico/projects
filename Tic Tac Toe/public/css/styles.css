@@ -23,12 +23,8 @@ body {
 .container {
   width: 500px;
   height: 550px;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
+  text-align: center;
+  margin-top: 50px;
 }
 
 .tablero {
@@ -99,8 +95,7 @@ body {
 }
 
 #restartButton {
-  margin-top: 50px;
-  margin-left: 40%;
+  margin-top: 35px;
   font-family: Verdana;
   font-size: 25px;
   border: none;
@@ -117,4 +112,24 @@ body {
   font-size: 18px;
   font-weight: bold;
   margin-top: 10px;
+}
+
+/* Auth */
+
+h1 {
+  color: black;
+}
+
+.input {
+  width: 300px;
+  margin: 0 auto;
+}
+
+.loginContainer {
+  text-align: center;
+  margin-top: 40px;
+}
+
+.loginLinks {
+  list-style-type: none;
 }
