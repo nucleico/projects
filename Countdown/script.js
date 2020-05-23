@@ -1,10 +1,18 @@
-const fraseAleatoria = 'https://api.quotable.io/random';
 const fraseElemento = document.getElementById('fraseE');
 const author = document.getElementById('author');
 const fraseInput = document.getElementById('fraseInput');
 const contador = document.getElementById('contador');
+const appBtn = document.querySelector('#applyBtn');
+const difficulty = document.querySelector('#difficulty');
+
+const easyFrase = 'https://api.quotable.io/random/?minLength=20&maxLength=40';
+const normalFrase =
+  'https://api.quotable.io/random/?minLength=41&maxLength=150';
+const dificilFrase =
+  'https://api.quotable.io/random/?minLength=150&maxLength=1500';
 
 fraseInput.addEventListener('input', () => {
+  const difficultyLevel = difficulty.value;
   const arrayFrase = fraseElemento.querySelectorAll('span');
   const arrayValor = fraseInput.value.split('');
   let correct = true;
@@ -23,32 +31,35 @@ fraseInput.addEventListener('input', () => {
       correct = false;
     }
   });
-  if (correct) renderNewQuote();
+  if (correct) renderNewQuote(difficultyLevel);
 });
 
-function getRandomQuote() {
-  return fetch(fraseAleatoria)
-    .then(response => response.json())
-    .then(data => data.content);
+function getRandomQuote(difficultyLevel) {
+  if (difficultyLevel === 'facil') {
+    return fetch(`${easyFrase}`)
+      .then((response) => response.json())
+      .then((data) => [data.content, data.author]);
+  } else if (difficultyLevel === 'normal') {
+    return fetch(`${normalFrase}`)
+      .then((response) => response.json())
+      .then((data) => [data.content, data.author]);
+  } else {
+    return fetch(`${dificilFrase}`)
+      .then((response) => response.json())
+      .then((data) => [data.content, data.author]);
+  }
 }
 
-function getAuthorQuote() {
-  return fetch(fraseAleatoria)
-    .then(response => response.json())
-    .then(data => data.author);
-}
-
-async function renderNewQuote() {
-  const quote = await getRandomQuote();
-  const authorV = await getAuthorQuote();
+async function renderNewQuote(difficultyLevel) {
+  const quote = await getRandomQuote(difficultyLevel);
   fraseElemento.innerHTML = '';
-  quote.split('').forEach(character => {
+  quote[0].split('').forEach((character) => {
     const characterSpan = document.createElement('span');
     characterSpan.innerText = character;
     fraseElemento.appendChild(characterSpan);
   });
   fraseInput.value = null;
-  author.textContent = '(' + authorV + ')';
+  author.textContent = '(' + quote[1] + ')';
   startTimer();
 }
 
@@ -65,4 +76,17 @@ function getTimerTime() {
   return Math.floor((new Date() - startTime) / 1000);
 }
 
-renderNewQuote();
+// Set Level
+
+function startGame() {
+  const difficultyLevel = difficulty.value;
+  renderNewQuote(difficultyLevel);
+}
+
+appBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  const difficultyLevel = difficulty.value;
+  renderNewQuote(difficultyLevel);
+});
+
+startGame();

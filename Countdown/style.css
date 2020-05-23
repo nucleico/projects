@@ -8,22 +8,25 @@ body {
   align-items: center;
   min-height: 100vh;
   margin: 0;
-  background-color: #d91515;
+  background-color: #e0fbfc;
   font-family: 'Roboto Condensed', sans-serif;
 }
 
 .sContainer {
   display: flex;
   flex-direction: column;
+  position: absolute;
+  top: 15%;
 }
 
 .container {
-  background-color: #831a3d;
+  background-color: #ee6c4d;
   margin: 0 auto;
   padding: 1rem;
   border-radius: 0.5rem;
   width: 700px;
   max-width: 90%;
+  position: relative;
 }
 
 .contador {
@@ -48,7 +51,6 @@ body {
 
 .quote-input {
   background-color: transparent;
-
   border: 2px solid #370d0d;
   outline: none;
   width: 100%;
@@ -58,11 +60,6 @@ body {
   padding: 0.5rem 1rem;
   font-size: 1rem;
   border-radius: 0.5rem;
-}
-
-.description {
-  margin-top: 50px;
-  text-align: center;
 }
 
 .quote-input:focus {
@@ -76,4 +73,39 @@ body {
 .incorrect {
   /* color: #370D0D; */
   color: black;
+}
+
+.container::before {
+  content: attr(data-tooltip);
+  scale: 0;
+  width: 250px;
+  height: 50px;
+  position: absolute;
+  top: 6em;
+  right: -16em;
+  background-color: #98c1d9;
+  transform: scale(0);
+  transition: 150ms transform;
+  transform-origin: left center;
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container:hover::before {
+  transform: scale(1);
+}
+
+#difContainer {
+  margin-top: 30px;
+  text-align: center;
+}
+
+#applyBtn {
+  margin-top: 15px;
+  background-color: #98cacc;
+
+  padding: 5px;
+  font-family: 'Roboto Condensed', sans-serif;
 }

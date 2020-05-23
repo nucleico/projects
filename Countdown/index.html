@@ -12,15 +12,21 @@
   <body>
     <div class="sContainer">
       <div class="contador" id="contador"></div>
-      <div class="container">
+      <div class="container" data-tooltip="Completá la frase en el cuadro">
         <div class="quote-display" id="fraseE"></div>
         <div id="author"></div>
         <textarea id="fraseInput" class="quote-input" autofocus></textarea>
       </div>
-
-      <div class="description">
-        Completá la frase de arriba en el menor tiempo posible.
-      </div>
+      <div id="difContainer">
+      <form>
+        <label for="difficulty">Dificultad</label>
+        <select name="difficulty" id="difficulty">
+          <option id="facilOption" value="facil" selected="selected">Fácil</option>
+          <option id="normalOption" value="normal">Normal</option>
+          <option id="dificilOption" value="dificil">Difícil</option>
+        </select>
+        <div><input id="applyBtn" value="Aplicar" type="submit"/></div>
+      </form>
     </div>
 
     <script type="text/javascript" src="script.js"></script>
