@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Validation</title>
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/3c8ec2e6c4.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container">
+      <form id="validation" action="">
+        <div class="eachInput">
+          <label for="nombre">Nombre</label>
+          <input type="text" id="nombre" placeholder="Nombre" required />
+          <i class="far fa-times-circle"></i>
+          <i class="far fa-check-circle"></i>
+          <small>Mensaje de Error</small>
+        </div>
+
+        <div class="eachInput">
+          <label for="apellido">Apellido</label>
+          <input type="text" id="apellido" required placeholder="Apellido" />
+          <i class="far fa-times-circle"></i>
+          <i class="far fa-check-circle"></i>
+          <small>Mensaje de Error</small>
+        </div>
+
+        <div class="eachInput">
+          <label for="usuario">Usuario</label>
+          <input type="text" id="usuario" placeholder="Usuario" required />
+          <i class="far fa-times-circle"></i>
+          <i class="far fa-check-circle"></i>
+          <small>Mensaje de Error</small>
+        </div>
+
+        <div class="eachInput">
+          <label for="email">Correo Electrónico</label>
+          <input
+            type="email"
+            id="email"
+            placeholder="Correo Electrónico"
+            required
+          />
+          <i class="far fa-check-circle"></i>
+          <i class="far fa-times-circle"></i>
+          <small>Mensaje de Error</small>
+        </div>
+
+        <div class="eachInput">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            placeholder="Password"
+            required
+          />
+          <i class="far fa-check-circle"></i>
+          <i class="far fa-times-circle"></i>
+          <small>Mensaje de Error</small>
+        </div>
+
+        <div class="eachInput">
+          <label for="password">Confirmar Password</label>
+          <input
+            type="password"
+            id="password2"
+            placeholder="Confirme password"
+            required
+          />
+          <i class="far fa-check-circle"></i>
+          <i class="far fa-times-circle"></i>
+          <small>Mensaje de Error</small>
+        </div>
+
+        <button type="submit">Enviar</button>
+      </form>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

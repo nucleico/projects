@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,500&display=swap');
+
+body {
+  background-color: #a8dadc;
+}
+
+.container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 550px;
+  width: 270px;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  background-color: #f1faee;
+  border-radius: 5px;
+  text-align: center;
+}
+
+button {
+  width: 100%;
+  margin-top: 15px;
+  font-family: Calibri;
+  font-size: 16px;
+  color: white;
+  font-weight: 400;
+  border-radius: 5px;
+  background-color: #e63946;
+}
+
+input {
+  display: block;
+  margin-top: 8px;
+  margin-left: 10px;
+  font-family: Calibri;
+  width: 200px;
+  outline: none;
+  background-color: rgb(236, 228, 228);
+}
+
+small {
+  margin-bottom: 125px;
+  margin-left: 10px;
+  visibility: hidden;
+}
+
+.eachInput {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.eachInput i {
+  visibility: hidden;
+  position: absolute;
+  right: 8px;
+  top: 32px;
+}
+
+.eachInput.success input {
+  border-color: #2ecc71;
+}
+
+.eachInput.success i.fa-check-circle {
+  visibility: visible;
+  color: #2ecc71;
+}
+
+.eachInput.error i.fa-times-circle {
+  visibility: visible;
+  color: #e74c3c;
+}
+
+.eachInput.error input {
+  border-color: #e74c3c;
+}
