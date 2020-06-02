@@ -45,37 +45,42 @@ class Card extends Component {
   render() {
     const { personajeName, personajeImg, getComics } = this.props;
     return (
-      <div
-        onClick={getComics}
-        onMouseEnter={this.openStats}
-        onMouseLeave={this.closeStats}
-        className="card"
-      >
-        {this.state.toggleFav ? (
-          <FontAwesomeIcon
-            icon={heartSolid}
-            className="favIcon"
-            onClick={this.makeFav}
-          />
-        ) : (
-          <FontAwesomeIcon
-            icon={heartRegular}
-            className="favIcon"
-            onClick={this.makeFav}
-          />
-        )}
-        <h1 className="name">{personajeName}</h1>
-        {this.state.toggleStats ? (
-          <Stats
-            powerPoints={this.state.powerPoints}
-            speedPoints={this.state.speedPoints}
-            resPoints={this.state.resPoints}
-          />
-        ) : (
-          ''
-        )}
-        <img className="personajeImg" src={personajeImg} alt="personaje"></img>
-      </div>
+      
+        <div
+          onClick={getComics}
+          onMouseEnter={this.openStats}
+          onMouseLeave={this.closeStats}
+          className="card"
+        >
+          {this.state.toggleFav ? (
+            <FontAwesomeIcon
+              icon={heartSolid}
+              className="favIcon"
+              onClick={this.makeFav}
+            />
+          ) : (
+            <FontAwesomeIcon
+              icon={heartRegular}
+              className="favIcon"
+              onClick={this.makeFav}
+            />
+          )}
+          <h1 className="name">{personajeName}</h1>
+          {this.state.toggleStats ? (
+            <Stats
+              powerPoints={this.state.powerPoints}
+              speedPoints={this.state.speedPoints}
+              resPoints={this.state.resPoints}
+            />
+          ) : (
+            ''
+          )}
+          <img
+            className="personajeImg"
+            src={personajeImg}
+            alt="personaje"
+          ></img>
+        </div>      
     );
   }
 }

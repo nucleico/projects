@@ -5,6 +5,7 @@ import ComicList from './components/ComicList';
 import SearchBar from './components/SearchBar';
 import axios from 'axios';
 import { ThemeContext } from './context/ThemeContext';
+import { AnimatePresence } from 'framer-motion';
 
 class App extends Component {
   static contextType = ThemeContext;
@@ -149,6 +150,7 @@ class App extends Component {
           favCharacters={this.state.favCharacters}
           favCharacterImg={this.state.favCharacterImg}
         />
+        <AnimatePresence>
         {this.state.toggleComic ? (
           <ComicList
             comicTitle={this.state.comicTitle}
@@ -157,7 +159,7 @@ class App extends Component {
           />
         ) : (
           ''
-        )}
+        )} </AnimatePresence>
         <h4 style={{ color: theme.letter }}>
           Data provided by Marvel. © 2014 Marvel.
         </h4>

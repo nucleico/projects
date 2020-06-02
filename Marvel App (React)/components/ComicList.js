@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Comic from './Comic';
 import NoResults from './NoResults';
 import { ThemeContext } from '../context/ThemeContext';
+import { motion, AnimatePresence } from "framer-motion"
 
 class ComicList extends Component {
   static contextType = ThemeContext;
@@ -22,7 +23,11 @@ class ComicList extends Component {
     });
 
     return (
-      <div
+      
+      <motion.div initial={{opacity: 0}}
+      animate={{opacity: 1}}
+      transition={{ duration: 0.5 }}
+      exit={{opacity: 0}}
         style={{ backgroundColor: theme.comicBack }}
         className="comicContainer"
       >
@@ -41,7 +46,7 @@ class ComicList extends Component {
         ) : (
           <NoResults eraseData={eraseData} />
         )}
-      </div>
+      </motion.div>     
     );
   }
 }

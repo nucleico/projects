@@ -27,24 +27,23 @@ h4 {
 }
 
 .grid {
-  padding-top: 50px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  padding-top: 70px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(325px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+  row-gap: 20px;
+  justify-items: center;
 }
 
 .card {
   width: 250px;
-  margin: 10px;
   height: 300px;
   font-size: 8px;
   border: 1px solid black;
   position: relative;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
@@ -59,13 +58,34 @@ h4 {
 }
 
 .card .personajeImg {
-  width: 250px;
+  width: 100%;
   height: 100%;
 }
 
 .card:hover {
   opacity: 0.9;
-  border: 1px solid lightseagreen;
+}
+
+.card:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: #3d3939;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 5px;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.card:hover:after {
+  width: 105%;
+  height: 105%;
+  top: -7px;
+  right: -6px;
 }
 
 .marvelLogo {
@@ -113,6 +133,10 @@ h4 {
   outline: none;
   padding: 5px;
   font-family: Bitter, sans-serif;
+}
+
+.themeBtn:hover {
+  opacity: 0.8;
 }
 
 .favList {
@@ -286,6 +310,9 @@ table {
   }
   .noResultsComics {
     top: 100px;
+  }
+  .clickForInfoTxt {
+    display: none;
   }
 }
 /*# sourceMappingURL=styles.css.map */

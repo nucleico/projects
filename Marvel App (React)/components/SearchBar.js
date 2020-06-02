@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import '../styles/styles.css';
 import Logo from '../img/marvellogo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import FavList from './FavList';
 import { ThemeContext } from '../context/ThemeContext';
+import { motion, AnimatePresence } from "framer-motion"
 
 class SearchBar extends Component {
   static contextType = ThemeContext;
@@ -17,11 +17,12 @@ class SearchBar extends Component {
     const theme = isLightTheme ? light : dark;
     const favListComponent = this.props.favCharacters.map((el, i) => {
       return (
+       
         <FavList
           favCharacters={this.props.favCharacters[i]}
           favCharacterImg={this.props.favCharacterImg[i]}
           removeFavList={this.props.removeFavList}
-        />
+        /> 
       );
     });
     return (
@@ -53,9 +54,13 @@ class SearchBar extends Component {
         >
           Favourites
         </h3>
-
+        <AnimatePresence>
         {this.props.favListToggle ? (
-          <div
+          
+          <motion.div initial={{opacity: 0}}
+          animate={{opacity: 1}}
+          transition={{ duration: 0.5 }}
+          exit={{opacity: 0}}
             style={{ backgroundColor: theme.comicBack }}
             className="favContainer"
           >
@@ -70,10 +75,10 @@ class SearchBar extends Component {
               Favourite List
             </h2>
             {favListComponent}
-          </div>
+          </motion.div> 
         ) : (
           ''
-        )}
+        )} </AnimatePresence>
       </div>
     );
   }
