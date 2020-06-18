@@ -20,8 +20,7 @@ class SearchBar extends Component {
        
         <FavList
           favCharacters={this.props.favCharacters[i]}
-          favCharacterImg={this.props.favCharacterImg[i]}
-          removeFavList={this.props.removeFavList}
+          favCharacterImg={this.props.favCharacterImg[i]}          
         /> 
       );
     });
@@ -41,14 +40,14 @@ class SearchBar extends Component {
           <FontAwesomeIcon icon={faSearch} className="searchIcon" />
         </form>
 
-        <h2 style={{ color: theme.letter }} className="clickForInfoTxt">
+        <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className="clickForInfoTxt">
           Click each card for comic appearances!
         </h2>
         <button className="themeBtn" onClick={toggleTheme}>
           Change Theme
         </button>
         <h3
-          style={{ color: theme.letter }}
+          style={{ color: theme.letter, fontWeight: theme.weight }}
           className="favList"
           onClick={this.props.favListToggleFn}
         >
@@ -71,7 +70,7 @@ class SearchBar extends Component {
             >
               X
             </button>
-            <h2 style={{ color: theme.letter }} id="favWord">
+            <h2 style={{ color: theme.letter, fontWeight: theme.weight }} id="favWord">
               Favourite List
             </h2>
             {favListComponent}

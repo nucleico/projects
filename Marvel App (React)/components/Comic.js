@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import '../styles/styles.css';
 import { ThemeContext } from '../context/ThemeContext';
 
+
 class Comic extends Component {
   static contextType = ThemeContext;
   render() {
@@ -9,7 +10,10 @@ class Comic extends Component {
     const theme = isLightTheme ? light : dark;
     const { comicTitle, comicImg } = this.props;
     return (
+     
       <div className="comicListContainer">
+        
+         
         <table>
           <tbody>
             <tr>
@@ -26,12 +30,13 @@ class Comic extends Component {
         <table>
           <tbody>
             <tr>
-              <td style={{ color: theme.letter }} className="comicTable">
+              <td style={{ color: theme.letter, fontWeight: theme.weight }} className="comicTable">
                 *{comicTitle}
               </td>
             </tr>
           </tbody>
-        </table>
+         </table> 
+        
       </div>
     );
   }

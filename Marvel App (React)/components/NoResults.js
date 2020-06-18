@@ -13,7 +13,7 @@ class NoResults extends Component {
         style={{ backgroundColor: theme.comicBack }}
         className="comicContainer"
       >
-        <h2 style={{ color: theme.letter }} className="noResultsComics">
+        <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className="noResultsComics">
           No comic appearances registered in the Marvel database!
         </h2>
         <button

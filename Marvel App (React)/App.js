@@ -32,7 +32,8 @@ class App extends Component {
         const response = await axios.get(
           `https://gateway.marvel.com/v1/public/characters?nameStartsWith=${query}&ts=1&apikey=6f44abf169878c0d274e18fd74271fe3&hash=e08061f3544ab0998b879bc0db6d4a01`
         );
-        const [...data] = await response.data.data.results;
+        const data = response.data.data.results;
+
         const names = data.map((name) => {
           return name.name;
         });
@@ -62,9 +63,10 @@ class App extends Component {
   getComics = async (characterId) => {
     try {
       const response = await axios.get(
-        `https://gateway.marvel.com/v1/public/characters/${characterId}/comics?ts=1&apikey=6f44abf169878c0d274e18fd74271fe3&hash=e08061f3544ab0998b879bc0db6d4a01`
+        `https://gateway.marvel.com/v1/public/characters/${characterId}/comics?ts=1&limit=50&apikey=6f44abf169878c0d274e18fd74271fe3&hash=e08061f3544ab0998b879bc0db6d4a01`
       );
-      const [...data] = await response.data.data.results;
+      const data = response.data.data.results;
+
       const title = data.map((name) => {
         return name.title;
       });
@@ -137,7 +139,6 @@ class App extends Component {
           getCharacter={this.getCharacter}
           favCharacters={this.state.favCharacters}
           favCharacterImg={this.state.favCharacterImg}
-          removeFavList={this.removeFavList}
         />
 
         <CardList
@@ -151,16 +152,17 @@ class App extends Component {
           favCharacterImg={this.state.favCharacterImg}
         />
         <AnimatePresence>
-        {this.state.toggleComic ? (
-          <ComicList
-            comicTitle={this.state.comicTitle}
-            comicImg={this.state.comicImg}
-            eraseData={this.eraseData}
-          />
-        ) : (
-          ''
-        )} </AnimatePresence>
-        <h4 style={{ color: theme.letter }}>
+          {this.state.toggleComic ? (
+            <ComicList
+              comicTitle={this.state.comicTitle}
+              comicImg={this.state.comicImg}
+              eraseData={this.eraseData}
+            />
+          ) : (
+            ''
+          )}{' '}
+        </AnimatePresence>
+        <h4 style={{ color: theme.letter, fontWeight: theme.weight }}>
           Data provided by Marvel. © 2014 Marvel.
         </h4>
       </div>

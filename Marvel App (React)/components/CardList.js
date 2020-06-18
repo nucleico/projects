@@ -23,7 +23,8 @@ class CardList extends Component {
 
     return (
       <div>
-        <div className="grid">{cardComponent} </div>{' '}
+        <div className="grid">{cardComponent} </div>
+        
       </div>
     );
   }

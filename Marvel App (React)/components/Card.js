@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart as heartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as heartSolid } from '@fortawesome/free-solid-svg-icons';
 import Stats from './Stats';
+import { ThemeContext } from '../context/ThemeContext';
 
 class Card extends Component {
+  static contextType = ThemeContext;
   constructor(props) {
     super(props);
     this.state = {
@@ -44,6 +46,8 @@ class Card extends Component {
 
   render() {
     const { personajeName, personajeImg, getComics } = this.props;
+    const { isLightTheme, light, dark } = this.context;
+    const theme = isLightTheme ? light : dark;
     return (
       
         <div
@@ -51,6 +55,7 @@ class Card extends Component {
           onMouseEnter={this.openStats}
           onMouseLeave={this.closeStats}
           className="card"
+          style={{ "--shadowElementColor": theme.shadowElement }}          
         >
           {this.state.toggleFav ? (
             <FontAwesomeIcon

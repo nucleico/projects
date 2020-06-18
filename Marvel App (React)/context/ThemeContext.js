@@ -15,7 +15,9 @@ class ThemeContextProvider extends Component {
       navBack: '#756f6b',
       back: '#44413e',
       comicBack: '#756f6b',
-      letter: '#e2d3cc',
+      letter: 'white',
+      weight: "400",
+      shadowElement: "rgb(201, 0, 0)",
     },
   };
   toggleTheme = () => {

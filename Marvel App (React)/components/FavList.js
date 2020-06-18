@@ -24,7 +24,7 @@ class FavList extends Component {
         <table>
           <tbody>
             <tr>
-              <td style={{ color: theme.letter }} className="comicTable">
+              <td style={{ color: theme.letter, fontWeight: theme.weight }} className="comicTable">
                 {this.props.favCharacters}{' '}
               </td>
             </tr>
