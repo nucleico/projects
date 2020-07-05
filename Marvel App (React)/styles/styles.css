@@ -47,8 +47,9 @@ h4 {
 .card {
   width: 250px;
   height: 300px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
   font-size: 8px;
-  border: 1px solid black;
   position: relative;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
@@ -70,30 +71,70 @@ h4 {
   height: 100%;
 }
 
-.card:hover {
-  opacity: 0.9;
+.card:hover .innerCard {
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
 
-.card:after {
-  content: '';
+.innerCard {
+  border: 1px solid black;
+  position: relative;
   width: 100%;
   height: 100%;
-  display: block;
-  background-color: var(--shadowElementColor);
-  position: absolute;
-  top: 0;
-  right: 0;
-  z-index: -1;
-  border-radius: 5px;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
+  -webkit-transition: -webkit-transform 0.8s;
+  transition: -webkit-transform 0.8s;
+  transition: transform 0.8s;
+  transition: transform 0.8s, -webkit-transform 0.8s;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
 }
 
-.card:hover:after {
-  width: 105%;
-  height: 105%;
-  top: -7px;
-  right: -6px;
+.frontCard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.statsContainer {
+  width: 100%;
+  height: 100%;
+  background-color: #2e2424;
+  position: absolute;
+  font-size: 12px;
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.nameBackCard {
+  text-align: center;
+  padding-top: 35px;
+  color: #dbd5d5;
+  font-family: Bitter, Helvetica, sans-serif;
+}
+
+.statsAtt {
+  padding: 15px;
+  color: #dbd5d5;
+  font-family: Bitter, Helvetica, sans-serif;
+}
+
+.attrBar {
+  height: 10px;
+  width: 100px;
+  border: 1px solid black;
+  float: right;
+  margin-top: 5px;
+}
+
+.pointsBar {
+  height: 8px;
+  margin-top: 1px;
+  margin-left: 1px;
+  background-color: #cf0711;
 }
 
 .marvelLogo {
@@ -267,44 +308,6 @@ table {
   position: absolute;
   top: 175px;
   font-family: Girassol, Helvetica, sans-serif;
-}
-
-.statsContainer {
-  width: 252px;
-  height: 100px;
-  background-color: #2e2424;
-  position: absolute;
-  bottom: -1px;
-  left: -1px;
-  font-size: 12px;
-}
-
-.statsAtt {
-  padding: 15px;
-  color: #dbd5d5;
-  font-family: Bitter, Helvetica, sans-serif;
-}
-
-.attrBar {
-  height: 10px;
-  width: 100px;
-  border: 1px solid black;
-  float: right;
-  margin-top: 5px;
-}
-
-.pointsBar {
-  height: 8px;
-  margin-top: 1px;
-  margin-left: 1px;
-  background-color: #cf0711;
-}
-
-.statsContainer:hover {
-  height: 105px;
-  -webkit-transition: all 500ms ease;
-  transition: all 500ms ease;
-  font-size: 13px;
 }
 
 .pagination {
