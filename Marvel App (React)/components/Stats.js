@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import styles from '../styles/stats.module.scss';
 import { faHeart as heartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as heartSolid } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,7 +8,7 @@ class Stats extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggleFav: false      
+      toggleFav: false,
     };
   }
 
@@ -24,30 +25,29 @@ class Stats extends Component {
     }
   };
 
-
   render() {
     return (
-      <div className="statsContainer">
-          {this.state.toggleFav ? (
-            <FontAwesomeIcon
-              icon={heartSolid}
-              className="favIcon"
-              onClick={this.makeFav}
-            />
-          ) : (
-            <FontAwesomeIcon
-              icon={heartRegular}
-              className="favIcon"
-              onClick={this.makeFav}
-            />
-          )}
-        <h2 className="nameBackCard">Name: {this.props.personajeName}</h2>
-        <div className="statsAtt">
+      <div className={styles.statsContainer}>
+        {this.state.toggleFav ? (
+          <FontAwesomeIcon
+            icon={heartSolid}
+            className={styles.favIcon}
+            onClick={this.makeFav}
+          />
+        ) : (
+          <FontAwesomeIcon
+            icon={heartRegular}
+            className={styles.favIcon}
+            onClick={this.makeFav}
+          />
+        )}
+        <h2 className={styles.nameBackCard}>{this.props.personajeName}</h2>
+        <div className={styles.statsAtt}>
           <h2>
             Strength:{' '}
-            <div className="attrBar">
+            <div className={styles.attrBar}>
               <div
-                className="pointsBar"
+                className={styles.pointsBar}
                 style={{ width: this.props.powerPoints }}
               ></div>
             </div>
@@ -55,9 +55,9 @@ class Stats extends Component {
 
           <h2>
             Speed:{' '}
-            <div className="attrBar">
+            <div className={styles.attrBar}>
               <div
-                className="pointsBar"
+                className={styles.pointsBar}
                 style={{ width: this.props.speedPoints }}
               ></div>
             </div>
@@ -65,9 +65,9 @@ class Stats extends Component {
 
           <h2>
             Resistance:{' '}
-            <div className="attrBar">
+            <div className={styles.attrBar}>
               <div
-                className="pointsBar"
+                className={styles.pointsBar}
                 style={{ width: this.props.resPoints }}
               ></div>
             </div>
@@ -77,6 +77,5 @@ class Stats extends Component {
     );
   }
 }
-
 
 export default Stats;

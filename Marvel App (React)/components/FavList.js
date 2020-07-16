@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ThemeContext } from '../context/ThemeContext';
+import styles from '../styles/favlist.module.scss';
 
 class FavList extends Component {
   static contextType = ThemeContext;
@@ -7,14 +8,14 @@ class FavList extends Component {
     const { isLightTheme, light, dark } = this.context;
     const theme = isLightTheme ? light : dark;
     return (
-      <div className="comicListContainer" draggable="true">
+      <div className={styles.comicListContainer}>
         <table>
           <tbody>
             <tr>
-              <td className="imgTable">
+              <td className={styles.imgTable}>
                 <img
                   src={this.props.favCharacterImg}
-                  className="imagenComic"
+                  className={styles.imagenComic}
                   alt="imagen character"
                 ></img>
               </td>
@@ -24,7 +25,7 @@ class FavList extends Component {
         <table>
           <tbody>
             <tr>
-              <td style={{ color: theme.letter, fontWeight: theme.weight }} className="comicTable">
+              <td style={{ color: theme.letter, fontWeight: theme.weight }} className={styles.comicTable}>
                 {this.props.favCharacters}{' '}
               </td>
             </tr>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/styles.css';
+import styles from '../styles/noresults.module.scss';
 import { ThemeContext } from '../context/ThemeContext';
 
 class NoResults extends Component {
@@ -11,14 +11,14 @@ class NoResults extends Component {
     return (
       <div
         style={{ backgroundColor: theme.comicBack }}
-        className="comicContainer"
+        className={styles.comicContainer}
       >
-        <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className="noResultsComics">
+        <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className={styles.noResultsComics}>
           No comic appearances registered in the Marvel database!
         </h2>
         <button
           style={{ color: theme.letter }}
-          className="xBtn"
+          className={styles.xBtn}
           onClick={this.props.eraseData}
         >
           X

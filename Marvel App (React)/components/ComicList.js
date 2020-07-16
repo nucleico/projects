@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Comic from './Comic';
+import styles from '../styles/comiclist.module.scss';
 import NoResults from './NoResults';
 import Pagination from "./Pagination"
 import { ThemeContext } from '../context/ThemeContext';
@@ -49,14 +50,14 @@ class ComicList extends Component {
       transition={{ duration: 0.5 }}
       exit={{opacity: 0}}
         style={{ backgroundColor: theme.comicBack }}
-        className="comicContainer"
+        className={styles.comicContainer}
       >
-        <h2 style={{ color: theme.letter, fontWeight: theme.weight }} id="comicWord">
+        <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className={styles.comicWord}>
           Comic Appeareances
         </h2>
         <button
           style={{ color: theme.letter }}
-          className="xBtn"
+          className={styles.xBtn}
           onClick={eraseData}
         >
           X

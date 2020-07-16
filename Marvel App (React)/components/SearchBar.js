@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../styles/styles.css';
+import styles from '../styles/searchbar.module.scss';
 import Logo from '../img/marvellogo.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -25,30 +25,30 @@ class SearchBar extends Component {
       );
     });
     return (
-      <div style={{ backgroundColor: theme.navBack }} className="navBar">
-        <img src={Logo} className="marvelLogo" alt="Marvel Logo"></img>
+      <div style={{ backgroundColor: theme.navBack }} className={styles.navBar}>
+        <img src={Logo} className={styles.marvelLogo} alt="Marvel Logo"></img>
 
-        <div id="lineNavBar"></div>
-        <form className="searchBar">
+        <div className={styles.lineNavBar}></div>
+        <form className={styles.searchBar}>
           <input
             type="text"
             name="query"
-            id="searchInput"
+            className={styles.searchInput}
             placeholder="Search characters..."
             onChange={this.handleChange}
           />
-          <FontAwesomeIcon icon={faSearch} className="searchIcon" />
+          <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
         </form>
 
-        <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className="clickForInfoTxt">
+        <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className={styles.clickForInfoTxt}>
           Click each card for comic appearances!
         </h2>
-        <button className="themeBtn" onClick={toggleTheme}>
+        <button className={styles.themeBtn} onClick={toggleTheme}>
           Change Theme
         </button>
         <h3
           style={{ color: theme.letter, fontWeight: theme.weight }}
-          className="favList"
+          className={styles.favList}
           onClick={this.props.favListToggleFn}
         >
           Favourites
@@ -61,16 +61,16 @@ class SearchBar extends Component {
           transition={{ duration: 0.5 }}
           exit={{opacity: 0}}
             style={{ backgroundColor: theme.comicBack }}
-            className="favContainer"
+            className={styles.favContainer}
           >
             <button
               style={{ color: theme.letter }}
-              className="xBtn"
+              className={styles.xBtn}
               onClick={this.props.favListToggleFn}
             >
               X
             </button>
-            <h2 style={{ color: theme.letter, fontWeight: theme.weight }} id="favWord">
+            <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className={styles.favWord}>
               Favourite List
             </h2>
             {favListComponent}
