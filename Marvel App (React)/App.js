@@ -1,30 +1,28 @@
 import React, { Component } from 'react';
 import './styles/styles.css';
-import CardList from './components/CardList';
-import ComicList from './components/ComicList';
-import SearchBar from './components/SearchBar';
 import axios from 'axios';
 import { ThemeContext } from './context/ThemeContext';
 import { AnimatePresence } from 'framer-motion';
+import CardList from './components/CardList';
+import ComicList from './components/ComicList';
+import SearchBar from './components/SearchBar';
+import FavList from './components/FavList';
 
 class App extends Component {
   static contextType = ThemeContext;
-  constructor(props) {
-    super(props);
-    this.state = {
-      personajeName: [],
-      comicsId: [],
-      personajeImg: [],
-      characterId: [],
-      comicTitle: [],
-      comicImg: [],
-      toggleComic: false,
-      favCharacters: [],
-      favCharacterImg: [],
-      favListToggle: false,
-      toggleFav: false,
-    };
-  }
+
+  state = {
+    personajeName: [],
+    personajeImg: [],
+    characterId: [],
+    comicTitle: [],
+    comicImg: [],
+    comicsId: [],
+    toggleComic: false,
+    favCharacters: [],
+    favCharacterImg: [],   
+    favListToggle: false, 
+  };
 
   getCharacter = async (query) => {
     if (query) {
@@ -34,19 +32,19 @@ class App extends Component {
         );
         const data = response.data.data.results;
 
-        const names = data.map((name) => {
-          return name.name;
-        });
-        const images = data.map((name) => {
-          return `${name.thumbnail.path}.${name.thumbnail.extension}`;
-        });
-        const id = data.map((name) => {
-          return name.id;
+        let names = [];
+        let img = [];
+        let id = [];
+
+        data.forEach((name) => {
+          names.push(name.name);
+          img.push(`${name.thumbnail.path}.${name.thumbnail.extension}`);
+          id.push(name.id);
         });
 
         this.setState({
           personajeName: names,
-          personajeImg: images,
+          personajeImg: img,
           characterId: id,
         });
       } catch (error) {
@@ -67,16 +65,14 @@ class App extends Component {
       );
       const data = response.data.data.results;
 
-      const title = data.map((name) => {
-        return name.title;
-      });
+      let title = [];
+      let comicImg = [];
+      let id = [];
 
-      const comicImg = data.map((name) => {
-        return `${name.thumbnail.path}.${name.thumbnail.extension}`;
-      });
-
-      const id = data.map((name) => {
-        return name.id;
+      data.forEach((name) => {
+        title.push(name.title);
+        comicImg.push(`${name.thumbnail.path}.${name.thumbnail.extension}`);
+        id.push(name.id);
       });
 
       this.setState({
@@ -118,7 +114,7 @@ class App extends Component {
       favCharacters: favCharactersUpdated,
       favCharacterImg: favImgUpdated,
     });
-  };
+  }; 
 
   favListToggleFn = () => {
     this.setState({
@@ -133,12 +129,11 @@ class App extends Component {
 
     return (
       <div>
-        <SearchBar
-          favListToggleFn={this.favListToggleFn}
-          favListToggle={this.state.favListToggle}
+        <SearchBar         
           getCharacter={this.getCharacter}
           favCharacters={this.state.favCharacters}
-          favCharacterImg={this.state.favCharacterImg}
+          favCharacterImg={this.state.favCharacterImg} 
+          favListToggleFn={this.favListToggleFn}         
         />
 
         <CardList
@@ -151,20 +146,27 @@ class App extends Component {
           favCharacters={this.state.favCharacters}
           favCharacterImg={this.state.favCharacterImg}
         />
+
         <AnimatePresence>
           {this.state.toggleComic ? (
             <ComicList
+              toggleComic={this.state.toggleComic}
               comicTitle={this.state.comicTitle}
               comicImg={this.state.comicImg}
               eraseData={this.eraseData}
             />
           ) : (
             ''
-          )}{' '}
+          )}
         </AnimatePresence>
-        <h4 style={{ color: theme.letter, fontWeight: theme.weight }}>
-          Data provided by Marvel. © 2014 Marvel.
-        </h4>
+
+        <AnimatePresence>
+          {this.state.favListToggle ? (
+          <FavList          
+            favCharacters={this.state.favCharacters} 
+            favCharacterImg={this.state.favCharacterImg}  
+            favListToggleFn={this.favListToggleFn}         
+        />) : ''} </AnimatePresence>
       </div>
     );
   }

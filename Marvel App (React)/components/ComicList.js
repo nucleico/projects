@@ -7,6 +7,7 @@ import { ThemeContext } from '../context/ThemeContext';
 import { motion } from "framer-motion"
 
 class ComicList extends Component {
+  
   static contextType = ThemeContext;
   
   state = {      

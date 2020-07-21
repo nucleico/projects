@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import styles from '../styles/stats.module.scss';
+import styles from '../styles/backcard.module.scss';
 import { faHeart as heartRegular } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as heartSolid } from '@fortawesome/free-solid-svg-icons';
 
-class Stats extends Component {
+class BackCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -78,4 +78,4 @@ class Stats extends Component {
   }
 }
 
-export default Stats;
+export default BackCard;

@@ -4,7 +4,9 @@ import { ThemeContext } from '../context/ThemeContext';
 import Card from './Card';
 
 class CardList extends Component {
+
   static contextType = ThemeContext;
+
   render() {
     const { isLightTheme, light, dark } = this.context;
     const theme = isLightTheme ? light : dark;
@@ -28,11 +30,9 @@ class CardList extends Component {
     return (
       <div>
         <div className={styles.grid}>{cardComponent} </div>
-
         <h4 style={{ color: theme.letter, fontWeight: theme.weight }}>
           Data provided by Marvel. © 2014 Marvel.
-        </h4>
-        
+        </h4>        
       </div>
     );
   }

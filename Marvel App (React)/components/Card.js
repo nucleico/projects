@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from '../styles/card.module.scss';
-import Stats from './Stats';
+import BackCard from './BackCard';
 import { ThemeContext } from '../context/ThemeContext';
 
 class Card extends Component {
@@ -40,7 +40,7 @@ class Card extends Component {
           </div>
 
           <div>
-            <Stats
+            <BackCard
               personajeName={personajeName}
               personajeImg={personajeImg}
               removeFavList={removeFavList}
