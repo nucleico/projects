@@ -1,20 +1,23 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import Fav from "./Fav";
 import { ThemeContext } from '../context/ThemeContext';
 import styles from '../styles/favlist.module.scss';
 import { motion } from "framer-motion"
 
-class FavList extends Component {
-  static contextType = ThemeContext;
-  render() {
-    const { isLightTheme, light, dark } = this.context;
-    const theme = isLightTheme ? light : dark;
+import { connect } from "react-redux"
+import { favListToggle } from '../actions/dataActions';
 
-    const favListComponent = this.props.favCharacters.map((el, i) => {
+const FavList = ({favsData, favListToggle}) => {
+
+  const themeContext = useContext(ThemeContext)  
+  const { isLightTheme, light, dark } = themeContext;
+  const theme = isLightTheme ? light : dark;
+
+    const favListComponent = favsData.map((el, i) => {
       return (       
-        <Fav          
-          favCharacters={this.props.favCharacters[i]}
-          favCharacterImg={this.props.favCharacterImg[i]}          
+        <Fav      
+          favsData={favsData[i]}
+          key={favsData[i].id}
         /> 
       );
     });
@@ -32,18 +35,23 @@ class FavList extends Component {
             <button
               style={{ color: theme.letter }}
               className={styles.xBtn}
-              onClick={this.props.favListToggleFn}
+              onClick={favListToggle}
             >
               X
             </button>
             <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className={styles.favWord}>
               Favourite List
             </h2>
-            {favListComponent} {/* Render FavList Component */}
+            {favsData.length !== 0 ? favListComponent : <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className={styles.noResultsFavs}>Please add favourite characters!</h2>} {/* Render FavList Component */}
           </motion.div> 
       </div>
     );
   }
-}
 
-export default FavList;
+  const mapStateToProps = (state) => ({
+    favsData: state.data.favsData
+  }
+  )
+
+
+export default connect(mapStateToProps, {favListToggle})(FavList);

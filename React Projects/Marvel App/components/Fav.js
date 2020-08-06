@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import styles from '../styles/fav.module.scss';
 import { ThemeContext } from '../context/ThemeContext';
 
-
-export default class Fav extends Component {
-    static contextType = ThemeContext;
-    render() {
-        const { isLightTheme, light, dark } = this.context;
+const Fav = ({favsData}) => {
+  
+  const themeContext = useContext(ThemeContext)    
+        
+        const { isLightTheme, light, dark } = themeContext
         const theme = isLightTheme ? light : dark;
         return (
          <div className={styles.comicListContainer}> 
@@ -15,7 +15,7 @@ export default class Fav extends Component {
             <tr>
               <td className={styles.imgTable}>
                 <img
-                  src={this.props.favCharacterImg}
+                  src={favsData.im}
                   className={styles.imagenComic}
                   alt="imagen character"
                 ></img>
@@ -30,7 +30,7 @@ export default class Fav extends Component {
                style={{ color: theme.letter, fontWeight: theme.weight }} 
                className={styles.comicTable}
                >
-                {this.props.favCharacters}
+                {favsData.ch}
               </td>
             </tr>
           </tbody>
@@ -38,4 +38,6 @@ export default class Fav extends Component {
          </div>
         )
     }
-}
+
+
+export default Fav

@@ -1,12 +1,10 @@
-import React, { Component } from 'react'
+import React, { useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext';
 
-class Pagination extends Component {
-    static contextType = ThemeContext;
+const Pagination = ({postsPerPage, totalPosts, paginate}) => {
+  const themeContext = useContext(ThemeContext)    
     
-    render() {
-        const { postsPerPage, totalPosts, paginate } = this.props;
-        const { isLightTheme, light, dark } = this.context;
+        const { isLightTheme, light, dark } = themeContext;
         const theme = isLightTheme ? light : dark;
 
         const pageNumbers = [];
@@ -29,6 +27,6 @@ class Pagination extends Component {
           </nav>
         )
     }
-}
+
 
 export default Pagination

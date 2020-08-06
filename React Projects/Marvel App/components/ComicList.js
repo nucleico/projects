@@ -1,51 +1,47 @@
-import React, { Component } from 'react';
+import React, { useState, useContext } from 'react';
 import Comic from './Comic';
 import styles from '../styles/comiclist.module.scss';
-import NoResults from './NoResults';
 import Pagination from "./Pagination"
 import { ThemeContext } from '../context/ThemeContext';
 import { motion } from "framer-motion"
+import { connect } from "react-redux"
+import { cleanComicData } from "../actions/dataActions"
 
-class ComicList extends Component {
-  
-  static contextType = ThemeContext;
-  
-  state = {      
-    postsPerPage: 10,
-    currentPage: 1,
-    }  
+const ComicList = ({cleanComicData, comicData}) => {
 
-  setCurrentPage = (number) => {
+  const [postsPerPage] = useState(10)
+  const [currentPage] = useState(1) 
+  
+  const themeContext = useContext(ThemeContext)
+  const { isLightTheme, light, dark } = themeContext;
+  const theme = isLightTheme ? light : dark; 
+  
+  const setCurrentPage = (number) => {
     this.setState({
       currentPage: number
     })
-  }
+  }        
+    
+    const indexOfLastPost = currentPage * postsPerPage;      
+    const indexOfFirstPost = indexOfLastPost - postsPerPage;    
 
-  render() {
-      
-    const { comicTitle, comicImg, eraseData} = this.props;
-    const { isLightTheme, light, dark } = this.context;
-    const theme = isLightTheme ? light : dark;
+    // const currentComicTitle = comicData.title.slice(indexOfFirstPost, indexOfLastPost);  
+    // const currentComicImg = comicData.img.slice(indexOfFirstPost, indexOfLastPost);   
 
-    const indexOfLastPost = this.state.currentPage * this.state.postsPerPage;      
-    const indexOfFirstPost = indexOfLastPost - this.state.postsPerPage;    
-    const currentComicTitle = comicTitle.slice(indexOfFirstPost, indexOfLastPost);  
-    const currentComicImg = comicImg.slice(indexOfFirstPost, indexOfLastPost);   
-
-    const comicComponent = currentComicTitle.map((el, i) => {
+    const comicComponent = comicData.map((el, i) => {
       return (
         <Comic
-          comicTitle={currentComicTitle[i]}
-          comicImg={currentComicImg[i]}
-          eraseData={eraseData}
-          key={i}
-          
+          comicData={comicData[i]} 
+          // comicTitle={currentComicTitle[i]}
+          // comicImg={currentComicImg[i]}                 
+          key={comicData[i].id}  
         />     
          
       );
     });
 
     return (
+     
     <motion.div initial={{opacity: 0}}
       animate={{opacity: 1}}
       transition={{ duration: 0.5 }}
@@ -59,26 +55,34 @@ class ComicList extends Component {
         <button
           style={{ color: theme.letter }}
           className={styles.xBtn}
-          onClick={eraseData}
+          onClick={cleanComicData}
         >
           X
-        </button>{' '}
+        </button>{' '}        
         {comicComponent.length > 0 ? (
           <div>
             {comicComponent}
             <Pagination 
-              postsPerPage={this.state.postsPerPage} 
-              totalPosts={comicTitle.length} 
-              paginate={this.setCurrentPage} />
+              postsPerPage={postsPerPage} 
+              // totalPosts={comicTitle.length} 
+              paginate={setCurrentPage} />
           </div>
             
         ) : (
-          <NoResults eraseData={eraseData} />
+          <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className={styles.noResultsComics}>
+          No comic appearances registered in the Marvel database!
+        </h2>
         )}
-      </motion.div>
+      </motion.div>     
      
     );
   }
-}
 
-export default ComicList;
+  const mapStateToProps = state => ({
+    comicData: state.data.comicData      
+  })
+
+
+export default connect(mapStateToProps, {cleanComicData})(ComicList);
+
+

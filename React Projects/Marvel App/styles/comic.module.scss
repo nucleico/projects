@@ -1,0 +1,35 @@
+$cellHeight: 80px;
+$imgWidth: 60px;
+$fontRoboto: Roboto, Arial, Helvetica, sans-serif;
+
+table {
+  margin-top: 33px;
+}
+
+.comicListContainer {
+  display: flex;
+}
+
+.imgTable {
+  height: $cellHeight;
+  margin-top: 35px;
+}
+
+.imagenComic {
+  height: 75px;
+  width: $imgWidth;
+  margin-right: 10px;
+  -webkit-box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+}
+
+.imagenComic:hover {
+  opacity: 0.8;
+}
+
+.comicTable {
+  height: $cellHeight;
+  font-size: 17px;
+  font-family: Bitter, Helvetica, sans-serif;
+}

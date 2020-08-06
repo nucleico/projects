@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import styles from '../styles/comic.module.scss';
 import '../styles/styles.css';
 import { ThemeContext } from '../context/ThemeContext';
 
-class Comic extends Component {
-  static contextType = ThemeContext;
-  render() {
-    const { isLightTheme, light, dark } = this.context;
+const Comic = ({comicData}) => {
+
+    const themeContext = useContext(ThemeContext)  
+    const { isLightTheme, light, dark } = themeContext;
     const theme = isLightTheme ? light : dark;
-    const { comicTitle, comicImg } = this.props;
+    const comicImg = `${comicData.thumbnail.path}.${comicData.thumbnail.extension}`
     return (     
+      
       <div className={styles.comicListContainer}>                
         <table>
           <tbody>
@@ -28,15 +29,16 @@ class Comic extends Component {
           <tbody>
             <tr>
               <td style={{ color: theme.letter, fontWeight: theme.weight }} className={styles.comicTable}>
-                *{comicTitle}
+                *{comicData.title}
               </td>
             </tr>
           </tbody>
          </table> 
         
       </div>
+       
     );
   }
-}
+
 
 export default Comic;

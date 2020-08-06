@@ -1,20 +1,21 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
 import styles from '../styles/searchbar.module.scss';
 import Logo from '../img/marvellogo.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { ThemeContext } from '../context/ThemeContext';
+import { connect } from "react-redux"
+import { getCharacter, favListToggle } from '../actions/dataActions';
 
-class SearchBar extends Component {
-  static contextType = ThemeContext;  
+const SearchBar = ( {favListToggle, getCharacter}) => {
+  
+  // static contextType = ThemeContext;  
+  const themeContext = useContext(ThemeContext)  
 
-  handleChange = (event) => {
-    this.props.getCharacter(event.target.value);
+ const onChange = (event) => {
+    getCharacter(event.target.value);
   };
-
-  render() {
-    const { isLightTheme, light, dark, toggleTheme } = this.context;
-    const theme = isLightTheme ? light : dark;
+ 
+  const { isLightTheme, light, dark, toggleTheme } = themeContext;
+  const theme = isLightTheme ? light : dark;
 
     return (
       <div style={{ backgroundColor: theme.navBack }} className={styles.navBar}>
@@ -27,9 +28,9 @@ class SearchBar extends Component {
             name="query"
             className={styles.searchInput}
             placeholder="Search characters..."
-            onChange={this.handleChange}
+            onChange={onChange}
           />
-          <FontAwesomeIcon icon={faSearch} className={styles.searchIcon} />
+          <i className={`${styles.searchIcon} fas fa-search`}/>         
         </form>
 
         <h2 style={{ color: theme.letter, fontWeight: theme.weight }} className={styles.clickForInfoTxt}>
@@ -43,7 +44,7 @@ class SearchBar extends Component {
         <h3
           style={{ color: theme.letter, fontWeight: theme.weight }}
           className={styles.favList}
-          onClick={this.props.favListToggleFn}
+          onClick={favListToggle}
         >
           Favourites
         </h3>  
@@ -51,6 +52,6 @@ class SearchBar extends Component {
       </div>
     );
   }
-}
 
-export default SearchBar;
+
+export default connect(null, {getCharacter, favListToggle})(SearchBar);

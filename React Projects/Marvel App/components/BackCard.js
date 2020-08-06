@@ -1,54 +1,43 @@
-import React, { Component } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState } from 'react';
 import styles from '../styles/backcard.module.scss';
-import { faHeart as heartRegular } from '@fortawesome/free-regular-svg-icons';
-import { faHeart as heartSolid } from '@fortawesome/free-solid-svg-icons';
+import { connect } from "react-redux"
+import {removeFavList, addFavList} from "../actions/dataActions"
 
-class BackCard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      toggleFav: false,
-    };
-  }
+const BackCard = ({personajeData, removeFavList, addFavList }) => {
 
-  makeFav = (e) => {
+  const [powerPoints] = useState(Math.ceil(Math.random() * 98))
+  const [speedPoints] = useState(Math.ceil(Math.random() * 98))
+  const [resPoints] = useState(Math.ceil(Math.random() * 98))
+  const [fav, setFav] = useState(false)
+
+  const img = `${personajeData.thumbnail.path}.${personajeData.thumbnail.extension}`
+  const { name, id } = personajeData 
+
+  const makeFav = (e) => {
     e.stopPropagation();
-    this.setState({ toggleFav: !this.state.toggleFav });
-    if (!this.state.toggleFav) {
-      this.props.addFavList(this.props.personajeName, this.props.personajeImg);
+    setFav(!fav)
+    if (!fav) {
+      addFavList(name, img, id);
     } else {
-      this.props.removeFavList(
-        this.props.personajeName,
-        this.props.personajeImg
-      );
+      removeFavList(name, img, id);
     }
   };
-
-  render() {
+  
     return (
       <div className={styles.statsContainer}>
-        {this.state.toggleFav ? (
-          <FontAwesomeIcon
-            icon={heartSolid}
-            className={styles.favIcon}
-            onClick={this.makeFav}
-          />
-        ) : (
-          <FontAwesomeIcon
-            icon={heartRegular}
-            className={styles.favIcon}
-            onClick={this.makeFav}
-          />
-        )}
-        <h2 className={styles.nameBackCard}>{this.props.personajeName}</h2>
+        
+          <i className={`${styles.favIcon} ${fav ? `fas fa-heart` : `far fa-heart`}`}
+          onClick={makeFav}/>              
+      
+        <h2 className={styles.nameBackCard}>{name}</h2>
+
         <div className={styles.statsAtt}>
           <h2>
             Strength:{' '}
             <div className={styles.attrBar}>
               <div
                 className={styles.pointsBar}
-                style={{ width: this.props.powerPoints }}
+                style={{ width: powerPoints }}
               ></div>
             </div>
           </h2>
@@ -58,7 +47,7 @@ class BackCard extends Component {
             <div className={styles.attrBar}>
               <div
                 className={styles.pointsBar}
-                style={{ width: this.props.speedPoints }}
+                style={{ width: speedPoints }}
               ></div>
             </div>
           </h2>
@@ -68,14 +57,15 @@ class BackCard extends Component {
             <div className={styles.attrBar}>
               <div
                 className={styles.pointsBar}
-                style={{ width: this.props.resPoints }}
+                style={{ width: resPoints }}
               ></div>
             </div>
           </h2>
         </div>
+        
       </div>
     );
   }
-}
 
-export default BackCard;
+
+export default connect(null, { addFavList, removeFavList })(BackCard);

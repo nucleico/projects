@@ -1,0 +1,40 @@
+.favContainer {
+  width: 450px;
+  height: 450px;
+  background-color: whitesmoke;
+  border: 1px solid #d5e7db;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: auto;
+  padding: 25px;
+  position: fixed;
+  z-index: 2;
+}
+
+.noResultsFavs {
+  position: absolute;
+  top: 200px;
+  right: 90px;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+.xBtn {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.favWord {
+  text-align: center;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+/*# sourceMappingURL=favlist.module.css.map */

@@ -1,0 +1,63 @@
+@mixin positionCenter {
+  position: absolute;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.comicWord {
+  text-align: center;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+.xBtn {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.comicContainer {
+  width: 450px;
+  height: 450px;
+  background-color: whitesmoke;
+  border: 1px solid rgb(213, 231, 219);
+  @include positionCenter;
+  overflow: auto;
+  padding: 25px;
+  position: fixed;
+}
+
+.noResults {
+  font-size: 55px;
+  font-weight: bold;
+  margin-left: 25%;
+  margin-top: 20%;
+}
+
+.noResultsComics {
+  position: absolute;
+  top: 175px;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+@media only screen and (max-width: 600px) {
+  .comicContainer {
+    width: 250px;
+    height: 250px;
+  }
+
+  .comicWord {
+    font-size: 20px;
+    left: 55px;
+  }
+  .noResultsComics {
+    top: 100px;
+  }
+}
