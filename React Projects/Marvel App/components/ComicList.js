@@ -1,42 +1,28 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import Comic from './Comic';
 import styles from '../styles/comiclist.module.scss';
 import Pagination from "./Pagination"
-import { ThemeContext } from '../context/ThemeContext';
 import { motion } from "framer-motion"
 import { connect } from "react-redux"
 import { cleanComicData } from "../actions/dataActions"
 
-const ComicList = ({cleanComicData, comicData}) => {
+const ComicList = ({cleanComicData, comicData, themes, isLightTheme}) => {
+
+  const theme = isLightTheme ? themes.light : themes.dark; 
 
   const [postsPerPage] = useState(10)
-  const [currentPage] = useState(1) 
+  const [currentPage, setCurrentPage] = useState(1) 
   
-  const themeContext = useContext(ThemeContext)
-  const { isLightTheme, light, dark } = themeContext;
-  const theme = isLightTheme ? light : dark; 
-  
-  const setCurrentPage = (number) => {
-    this.setState({
-      currentPage: number
-    })
-  }        
-    
-    const indexOfLastPost = currentPage * postsPerPage;      
-    const indexOfFirstPost = indexOfLastPost - postsPerPage;    
-
-    // const currentComicTitle = comicData.title.slice(indexOfFirstPost, indexOfLastPost);  
-    // const currentComicImg = comicData.img.slice(indexOfFirstPost, indexOfLastPost);   
-
-    const comicComponent = comicData.map((el, i) => {
+  const indexOfLastPost = currentPage * postsPerPage;      
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentComic = comicData.slice(indexOfFirstPost, indexOfLastPost);  
+   
+    const comicComponent = currentComic.map((el, i) => {
       return (
         <Comic
-          comicData={comicData[i]} 
-          // comicTitle={currentComicTitle[i]}
-          // comicImg={currentComicImg[i]}                 
+          currentComic={currentComic[i]}                         
           key={comicData[i].id}  
-        />     
-         
+        /> 
       );
     });
 
@@ -64,8 +50,8 @@ const ComicList = ({cleanComicData, comicData}) => {
             {comicComponent}
             <Pagination 
               postsPerPage={postsPerPage} 
-              // totalPosts={comicTitle.length} 
-              paginate={setCurrentPage} />
+              totalPosts={comicData.length} 
+              setCurrentPage={setCurrentPage} />
           </div>
             
         ) : (
@@ -78,9 +64,13 @@ const ComicList = ({cleanComicData, comicData}) => {
     );
   }
 
+
   const mapStateToProps = state => ({
-    comicData: state.data.comicData      
-  })
+    comicData: state.data.comicData  ,
+    isLightTheme: state.data.isLightTheme,
+    themes: state.data.themes,
+
+})
 
 
 export default connect(mapStateToProps, {cleanComicData})(ComicList);

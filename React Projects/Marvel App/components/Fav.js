@@ -1,14 +1,13 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import styles from '../styles/fav.module.scss';
-import { ThemeContext } from '../context/ThemeContext';
+import {connect} from "react-redux"
 
-const Fav = ({favsData}) => {
+
+const Fav = ({favsData, themes, isLightTheme}) => {
   
-  const themeContext = useContext(ThemeContext)    
-        
-        const { isLightTheme, light, dark } = themeContext
-        const theme = isLightTheme ? light : dark;
-        return (
+  
+        const theme = isLightTheme ? themes.light : themes.dark;
+                return (
          <div className={styles.comicListContainer}> 
           <table>
           <tbody>
@@ -39,5 +38,12 @@ const Fav = ({favsData}) => {
         )
     }
 
+    const mapStateToProps = (state) => ({
+      favsData: state.data.favsData,
+      isLightTheme: state.data.isLightTheme,
+  themes: state.data.themes
+    }
+    )
 
-export default Fav
+
+export default connect(mapStateToProps)(Fav)

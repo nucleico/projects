@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import { ThemeContext } from '../context/ThemeContext';
 
-const Pagination = ({postsPerPage, totalPosts, paginate}) => {
+const Pagination = ({postsPerPage, totalPosts, setCurrentPage}) => {
   const themeContext = useContext(ThemeContext)    
     
         const { isLightTheme, light, dark } = themeContext;
-        const theme = isLightTheme ? light : dark;
+        const theme = isLightTheme ? light : dark;        
 
         const pageNumbers = [];
 
@@ -18,7 +18,7 @@ const Pagination = ({postsPerPage, totalPosts, paginate}) => {
             <ul className="pagination">
               {pageNumbers.map(number => (
                 <li style={{ color: theme.letter, fontWeight: theme.weight }} className="page-items" key={number}>
-                  <div onClick={() => paginate(number)}  >
+                  <div onClick={() => setCurrentPage(number)}  >
                     {number}
                   </div>
                 </li>

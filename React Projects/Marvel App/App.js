@@ -1,18 +1,16 @@
-import React, { useContext} from 'react';
+import React  from 'react';
 import './styles/styles.css';
-import { ThemeContext } from './context/ThemeContext';
 import { AnimatePresence } from 'framer-motion';
 import CardList from './components/CardList';
 import ComicList from './components/ComicList';
 import SearchBar from './components/SearchBar';
 import FavList from './components/FavList';
 import { connect } from 'react-redux';
+import { toggleTheme } from "./actions/dataActions"
 
-const App = ({comicListToggle, favListToggle}) => {
-
-  const themeContext = useContext(ThemeContext)  
-  const { isLightTheme, light, dark } = themeContext;
-  const theme = isLightTheme ? light : dark;
+const App = ({comicListToggle, favListToggle, isLightTheme, themes }) => {
+  
+  const theme = isLightTheme ? themes.light : themes.dark;
   document.body.style.backgroundColor = theme.back;
 
     return (
@@ -34,7 +32,9 @@ const App = ({comicListToggle, favListToggle}) => {
 
 const mapStateToProps = (state) => ({
   favListToggle: state.data.favListToggle,
-  comicListToggle: state.data.comicListToggle
+  comicListToggle: state.data.comicListToggle,
+  isLightTheme: state.data.isLightTheme,
+  themes: state.data.themes,
 })
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { toggleTheme })(App);

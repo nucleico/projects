@@ -1,21 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from '../styles/searchbar.module.scss';
 import Logo from '../img/marvellogo.png';
-import { ThemeContext } from '../context/ThemeContext';
 import { connect } from "react-redux"
-import { getCharacter, favListToggle } from '../actions/dataActions';
+import { getCharacter, favListToggle, toggleTheme } from '../actions/dataActions';
 
-const SearchBar = ( {favListToggle, getCharacter}) => {
-  
-  // static contextType = ThemeContext;  
-  const themeContext = useContext(ThemeContext)  
+const SearchBar = ( {favListToggle, getCharacter, toggleTheme, isLightTheme, themes}) => {
 
  const onChange = (event) => {
     getCharacter(event.target.value);
   };
  
-  const { isLightTheme, light, dark, toggleTheme } = themeContext;
-  const theme = isLightTheme ? light : dark;
+  const theme = isLightTheme ? themes.light : themes.dark;
 
     return (
       <div style={{ backgroundColor: theme.navBack }} className={styles.navBar}>
@@ -53,5 +48,10 @@ const SearchBar = ( {favListToggle, getCharacter}) => {
     );
   }
 
+  const mapStateToProps = (state) => ({    
+    isLightTheme: state.data.isLightTheme,
+    themes: state.data.themes,
+  })
 
-export default connect(null, {getCharacter, favListToggle})(SearchBar);
+
+export default connect(mapStateToProps, {toggleTheme, getCharacter, favListToggle})(SearchBar);

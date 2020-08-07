@@ -1,23 +1,20 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from '../styles/comic.module.scss';
 import '../styles/styles.css';
-import { ThemeContext } from '../context/ThemeContext';
+import { connect } from "react-redux"
 
-const Comic = ({comicData}) => {
+const Comic = ({currentComic, isLightTheme, themes}) => {
 
-    const themeContext = useContext(ThemeContext)  
-    const { isLightTheme, light, dark } = themeContext;
-    const theme = isLightTheme ? light : dark;
-    const comicImg = `${comicData.thumbnail.path}.${comicData.thumbnail.extension}`
-    return (     
-      
-      <div className={styles.comicListContainer}>                
+    const theme = isLightTheme ? themes.light : themes.dark;      
+
+    return (  
+       <div className={styles.comicListContainer}>                
         <table>
           <tbody>
             <tr>
               <td className={styles.imgTable}>
                 <img
-                  src={comicImg}
+                  src={`${currentComic.thumbnail.path}.${currentComic.thumbnail.extension}`}
                   className={styles.imagenComic}
                   alt="imagen comic"
                 ></img>
@@ -29,7 +26,7 @@ const Comic = ({comicData}) => {
           <tbody>
             <tr>
               <td style={{ color: theme.letter, fontWeight: theme.weight }} className={styles.comicTable}>
-                *{comicData.title}
+                *{currentComic.title}
               </td>
             </tr>
           </tbody>
@@ -40,5 +37,9 @@ const Comic = ({comicData}) => {
     );
   }
 
+  const mapStateToProps = state => ({
+    isLightTheme: state.data.isLightTheme,
+    themes: state.data.themes,
+})
 
-export default Comic;
+export default connect(mapStateToProps)(Comic);

@@ -1,17 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Fav from "./Fav";
-import { ThemeContext } from '../context/ThemeContext';
 import styles from '../styles/favlist.module.scss';
 import { motion } from "framer-motion"
-
 import { connect } from "react-redux"
 import { favListToggle } from '../actions/dataActions';
 
-const FavList = ({favsData, favListToggle}) => {
-
-  const themeContext = useContext(ThemeContext)  
-  const { isLightTheme, light, dark } = themeContext;
-  const theme = isLightTheme ? light : dark;
+const FavList = ({favsData, favListToggle, isLightTheme, themes}) => {
+  
+  const theme = isLightTheme ? themes.light : themes.dark;
 
     const favListComponent = favsData.map((el, i) => {
       return (       
@@ -49,9 +45,10 @@ const FavList = ({favsData, favListToggle}) => {
   }
 
   const mapStateToProps = (state) => ({
-    favsData: state.data.favsData
+    favsData: state.data.favsData,
+    isLightTheme: state.data.isLightTheme,
+themes: state.data.themes
   }
   )
-
 
 export default connect(mapStateToProps, {favListToggle})(FavList);

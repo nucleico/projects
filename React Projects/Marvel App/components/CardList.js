@@ -1,14 +1,11 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from '../styles/cardlist.module.scss';
-import { ThemeContext } from '../context/ThemeContext';
 import Card from './Card';
 import { connect } from "react-redux"
 
-const CardList = ( {personajeData} ) => {
+const CardList = ( {personajeData, isLightTheme, themes} ) => {
 
-    const themeContext = useContext(ThemeContext)   
-    const { isLightTheme, light, dark } = themeContext;
-    const theme = isLightTheme ? light : dark;
+    const theme = isLightTheme ? themes.light : themes.dark;
     
 
     const cardComponent = personajeData.map((u, i) => {
@@ -32,7 +29,10 @@ const CardList = ( {personajeData} ) => {
   }
 
   const mapStateToProps = state => ({
-    personajeData: state.data.personajeData      
+    personajeData: state.data.personajeData,      
+          isLightTheme: state.data.isLightTheme,
+      themes: state.data.themes,
+   
   })
 
 

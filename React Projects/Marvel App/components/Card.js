@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import styles from '../styles/card.module.scss';
 import BackCard from './BackCard';
-import { ThemeContext } from '../context/ThemeContext';
 import { connect } from "react-redux"
 import { getComics } from "../actions/dataActions"
 
-const Card = ({personajeData, getComics}) => {
+const Card = ({personajeData, getComics, isLightTheme, themes}) => {
   
-  const themeContext = useContext(ThemeContext)
-    const { isLightTheme, light, dark } = themeContext;
-    const theme = isLightTheme ? light : dark;   
+  
+    const theme = isLightTheme ? themes.light : themes.dark;   
 
     return (     
       <div
@@ -38,5 +36,11 @@ const Card = ({personajeData, getComics}) => {
     );
   }
 
+  const mapStateToProps = state => ({
+          
+          isLightTheme: state.data.isLightTheme,
+      themes: state.data.themes,
+   
+  })
 
-export default connect(null, {getComics})(Card);
+export default connect(mapStateToProps, {getComics})(Card);
