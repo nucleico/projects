@@ -7,6 +7,7 @@ import {
   CLEAN_CHARACTER,
   CLEAN_COMICS,
   TOGGLE_THEME,
+  SET_LOADING,
 } from './types';
 import axios from 'axios';
 
@@ -38,7 +39,7 @@ export const getComics = (personajeId) => async (dispatch) => {
       `https://gateway.marvel.com/v1/public/characters/${personajeId}/comics?ts=1&limit=50&apikey=6f44abf169878c0d274e18fd74271fe3&hash=e08061f3544ab0998b879bc0db6d4a01`
     );
 
-    const data = response.data.data.results;    
+    const data = response.data.data.results;
 
     dispatch({
       type: GET_COMIC,
@@ -73,7 +74,7 @@ export const removeFavList = (ch, im, id) => {
     im,
     id,
   };
-  console.log(data);
+
   return {
     type: REMOVE_FAV,
     payload: data,
@@ -89,5 +90,11 @@ export const favListToggle = () => {
 export const toggleTheme = () => {
   return {
     type: TOGGLE_THEME,
+  };
+};
+
+export const setLoading = () => {
+  return {
+    type: SET_LOADING,
   };
 };

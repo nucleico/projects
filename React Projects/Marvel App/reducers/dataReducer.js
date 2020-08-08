@@ -7,6 +7,7 @@ import {
   ADD_FAV,
   REMOVE_FAV,
   TOGGLE_THEME,
+  SET_LOADING,
 } from '../actions/types';
 
 const initialState = {
@@ -16,22 +17,23 @@ const initialState = {
   comicListToggle: false,
   favListToggleBool: false,
   isLightTheme: true,
-  themes: { 
+  loading: false,
+  themes: {
     light: {
-    navBack: '#f7f5f4',
-    back: 'white',
-    comicBack: 'whitesmoke',
-    letter: 'black',
+      navBack: '#f7f5f4',
+      back: 'white',
+      comicBack: 'whitesmoke',
+      letter: 'black',
+    },
+    dark: {
+      navBack: '#756f6b',
+      back: '#44413e',
+      comicBack: '#756f6b',
+      letter: 'white',
+      weight: '400',
+      shadowElement: 'rgb(201, 0, 0)',
+    },
   },
-  dark: {
-    navBack: '#756f6b',
-    back: '#44413e',
-    comicBack: '#756f6b',
-    letter: 'white',
-    weight: '400',
-    shadowElement: 'rgb(201, 0, 0)',
-  }
-},
 };
 
 export default (state = initialState, action) => {
@@ -51,6 +53,7 @@ export default (state = initialState, action) => {
         ...state,
         comicData: action.payload,
         comicListToggle: true,
+        loading: false,
       };
     case CLEAN_COMICS:
       return {
@@ -77,6 +80,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLightTheme: !state.isLightTheme,
+      };
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: true,
       };
     default:
       return state;
