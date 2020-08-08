@@ -1,22 +1,14 @@
-table {
-  margin-top: 33px;
-}
-
 .comicListContainer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
 }
 
-.imgTable {
-  height: 80px;
-  margin-top: 35px;
-}
-
 .imagenComic {
   height: 75px;
   width: 60px;
   margin-right: 10px;
+  margin-top: 45px;
   -webkit-box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
   box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
 }
@@ -25,8 +17,8 @@ table {
   opacity: 0.8;
 }
 
-.comicTable {
-  height: 80px;
+.comicCharacter {
+  margin-top: 75px;
   font-size: 17px;
   font-family: Bitter, Helvetica, sans-serif;
 }

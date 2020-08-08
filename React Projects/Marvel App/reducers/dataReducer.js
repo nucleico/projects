@@ -14,7 +14,7 @@ const initialState = {
   comicData: [],
   favsData: [],
   comicListToggle: false,
-  favListToggle: false,
+  favListToggleBool: false,
   isLightTheme: true,
   themes: { 
     light: {
@@ -61,7 +61,7 @@ export default (state = initialState, action) => {
     case TOGGLE_FAVLIST:
       return {
         ...state,
-        favListToggle: !state.favListToggle,
+        favListToggleBool: !state.favListToggleBool,
       };
     case ADD_FAV:
       return {

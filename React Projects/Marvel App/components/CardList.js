@@ -5,8 +5,7 @@ import { connect } from "react-redux"
 
 const CardList = ( {personajeData, isLightTheme, themes} ) => {
 
-    const theme = isLightTheme ? themes.light : themes.dark;
-    
+    const theme = isLightTheme ? themes.light : themes.dark;    
 
     const cardComponent = personajeData.map((u, i) => {
       return (

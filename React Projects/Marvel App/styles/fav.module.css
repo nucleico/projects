@@ -21,7 +21,8 @@
   opacity: 0.8;
 }
 
-.comicTable {
+.comicCharacter {
+  margin-top: 60px;
   height: 80px;
   font-size: 17px;
   font-family: Bitter, Helvetica, sans-serif;
