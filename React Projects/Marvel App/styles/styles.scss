@@ -16,6 +16,11 @@ $fontRoboto: Roboto, Arial, Helvetica, sans-serif;
 
 :root {
   --shadowElementColor: rgb(173, 171, 19);
+  --primary-color: #17a2b8;
+  --dark-color: #343a40;
+  --light-color: #f4f4f4;
+  --danger-color: #dc3545;
+  --success-color: #28a745;
 }
 
 * {
@@ -52,4 +57,483 @@ h4 {
   opacity: 0.5;
   font-size: 28px;
   transform: translateY(-2px);
+}
+
+// SearchBar
+
+.navBar {
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+  background-color: #f7f5f4;
+  padding: 5px;
+  display: flex;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.75);
+}
+
+.marvelLogo {
+  width: 50px;
+  margin: 5px;
+}
+
+.lineNavBar {
+  height: 25px;
+  margin-left: 20px;
+  border: 1px solid grey;
+}
+
+.searchBar {
+  background-color: transparent;
+}
+
+.searchInput {
+  background-color: #e7e6e6;
+  border: none;
+  height: 20px;
+  outline: none;
+  margin-left: 10px;
+  margin-top: 3px;
+  padding-left: 3px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.searchIcon {
+  margin-left: -20px;
+}
+
+.favList {
+  position: absolute;
+  right: 15px;
+  top: 3px;
+  font-size: 25px;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+.clickForInfoTxt {
+  position: absolute;
+  right: 145px;
+  top: 8px;
+  font-family: Girassol, Helvetica, sans-serif;
+  font-size: 18px;
+  margin-left: 100px;
+}
+
+.favList:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.themeBtn {
+  margin-left: 15px;
+  border: none;
+  outline: none;
+  padding: 5px;
+  font-family: Bitter, sans-serif;
+}
+
+.themeBtn:hover {
+  opacity: 0.8;
+}
+
+// FavList
+
+.favContainer {
+  width: 450px;
+  height: 450px;
+  background-color: whitesmoke;
+  border: 1px solid rgb(213, 231, 219);
+  @include positionCenter;
+  overflow: auto;
+  padding: 25px;
+  position: fixed;
+  z-index: 2;
+}
+
+.noResultsFavs {
+  position: absolute;
+  top: 200px;
+  right: 90px;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+.xBtn {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.favWord {
+  text-align: center;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+// Fav
+
+.imgTable {
+  height: $cellHeight;
+  margin-top: 5px;
+}
+
+.comicListContainer {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.imagenComic {
+  height: 75px;
+  width: $imgWidth;
+  margin-right: 10px;
+  -webkit-box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+}
+
+.imagenComic:hover {
+  opacity: 0.8;
+}
+
+.comicCharacter {
+  // height: $cellHeight;
+  font-size: 17px;
+  font-family: Bitter, Helvetica, sans-serif;
+}
+
+// Comic List
+
+.comicWord {
+  text-align: center;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+.xBtn {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+}
+
+.comicContainer {
+  width: 450px;
+  height: 450px;
+  background-color: whitesmoke;
+  border: 1px solid rgb(213, 231, 219);
+  @include positionCenter;
+  overflow: auto;
+  padding: 25px;
+  position: fixed;
+}
+
+.commentContainer {
+  width: 450px;
+  height: 450px;
+  background-color: whitesmoke;
+  border: 1px solid rgb(213, 231, 219);
+  @include positionCenter;
+  overflow: auto;
+  padding: 25px;
+  position: absolute;
+}
+
+.noResults {
+  font-size: 55px;
+  font-weight: bold;
+  margin-left: 25%;
+  margin-top: 20%;
+}
+
+.noResultsComics {
+  position: absolute;
+  top: 175px;
+  font-family: Girassol, Helvetica, sans-serif;
+}
+
+// COmic
+
+.comicListContainer {
+  display: flex;
+}
+
+.imagenComic {
+  height: 75px;
+  width: $imgWidth;
+  margin-right: 10px;
+  margin-top: 45px;
+  -webkit-box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 3px 21px -2px rgba(0, 0, 0, 0.75);
+}
+
+.imagenComic:hover {
+  opacity: 0.8;
+}
+
+.comicCharacter {
+  margin-top: 75px;
+  font-size: 17px;
+  font-family: Bitter, Helvetica, sans-serif;
+}
+
+// CardList
+
+.grid {
+  padding-top: 70px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+  row-gap: 20px;
+  justify-items: center;
+}
+
+// Card
+
+.card {
+  width: 250px;
+  height: 300px;
+  perspective: 1000px;
+  font-size: 8px;
+  position: relative;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  .name {
+    position: absolute;
+    color: white;
+    text-align: right;
+    bottom: 0;
+    right: 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    text-shadow: 2px 2px 12px #000000;
+  }
+  .personajeImg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.card:hover .innerCard {
+  transform: rotateY(180deg);
+}
+
+.innerCard {
+  border: 1px solid black;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.frontCard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+// BackCard
+
+.statsContainer {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(46, 36, 36);
+  position: absolute;
+  font-size: 12px;
+  transform: rotateY(180deg);
+  backface-visibility: hidden;
+}
+
+.nameBackCard {
+  text-align: center;
+  font-size: 25px;
+  padding-top: 35px;
+  color: rgb(219, 213, 213);
+  font-family: Bitter, Helvetica, sans-serif;
+}
+
+.statsAtt {
+  margin-top: 35px;
+  padding: 15px;
+  color: rgb(219, 213, 213);
+  font-family: Bitter, Helvetica, sans-serif;
+}
+
+.attrContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.attrBar {
+  width: 100px;
+  height: 10px;
+  border: 1px solid black;
+  transform: translateY(5px);
+}
+
+.pointsBar {
+  height: 8px;
+  margin-top: 1px;
+  margin-left: 1px;
+  background-color: rgb(207, 7, 17);
+}
+
+.favIcon {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px;
+  color: rgb(218, 189, 28);
+}
+
+.commentBtn {
+  font-family: $fontRoboto;
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+  height: 30px;
+  border: none;
+  background-color: rgb(216, 8, 8);
+}
+
+.commentBtn:hover {
+  background-color: rgb(146, 8, 8);
+}
+
+// Alert
+
+.alert {
+  position: absolute;
+  font-family: $fontRoboto;
+  left: 0;
+  top: 0;
+  width: 100%;
+  padding: 0.8rem;
+  background: var(--light-color);
+  color: #333;
+}
+
+.btn-primary,
+.bg-primary,
+.badge-primary,
+.alert-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.btn-light,
+.bg-light,
+.badge-light,
+.alert-light {
+  background: var(--light-color);
+  color: #333;
+}
+
+.btn-dark,
+.bg-dark,
+.badge-dark,
+.alert-dark {
+  background: var(--dark-color);
+  color: #fff;
+}
+
+.btn-danger,
+.bg-danger,
+.badge-danger,
+.alert-danger {
+  background: var(--danger-color);
+  color: #fff;
+}
+
+.btn-success,
+.bg-success,
+.badge-success,
+.alert-success {
+  background: var(--success-color);
+  color: #fff;
+}
+
+.btn-white,
+.bg-white,
+.badge-white,
+.alert-white {
+  background: #fff;
+  color: #333;
+  border: #ccc solid 1px;
+}
+
+// Comments
+
+.comment {
+  font-family: $fontRoboto;
+}
+
+.post {
+  align-items: center;
+  padding: 0.5rem;
+}
+
+.my-1 {
+  margin: 0.8rem 0;
+}
+
+.post .post-date {
+  color: rgb(156, 142, 142);
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-form {
+  font-family: $fontRoboto;
+}
+
+.commentWord {
+  font-size: 1.5rem;
+}
+
+.btn {
+  display: inline-block;
+  background: var(--light-color);
+  color: #333;
+  padding: 0.4rem 1.3rem;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 0.5rem;
+  transition: opacity 0.2s ease-in;
+  outline: none;
+}
+
+.btn-dark,
+.bg-dark,
+.badge-dark,
+.alert-dark {
+  background: var(--dark-color);
+  color: #fff;
+}
+
+@media only screen and (max-width: 600px) {
+  .clickForInfoTxt {
+    display: none;
+  }
+  .comicContainer {
+    width: 250px;
+    height: 250px;
+  }
+
+  .comicWord {
+    font-size: 20px;
+    left: 55px;
+  }
+  .noResultsComics {
+    top: 100px;
+  }
 }

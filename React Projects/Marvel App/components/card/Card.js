@@ -1,8 +1,7 @@
 import React from 'react';
-import styles from '../styles/card.module.scss';
 import BackCard from './BackCard';
 import { connect } from 'react-redux';
-import { getComics, setLoading } from '../actions/dataActions';
+import { getComics, setLoading } from '../../actions/dataActions';
 
 const Card = ({
   personajeData,
@@ -10,6 +9,7 @@ const Card = ({
   isLightTheme,
   themes,
   setLoading,
+  id,
 }) => {
   const getComicsHandle = () => {
     setLoading();
@@ -21,14 +21,14 @@ const Card = ({
   return (
     <div
       onClick={getComicsHandle}
-      className={styles.card}
+      className="card"
       style={{ '--shadowElementColor': theme.shadowElement }}
     >
-      <div className={styles.innerCard}>
-        <div className={styles.frontCard}>
-          <h1 className={styles.name}>{personajeData.name}</h1>
+      <div className="innerCard">
+        <div className="frontCard">
+          <h1 className="name">{personajeData.name}</h1>
           <img
-            className={styles.personajeImg}
+            className="personajeImg"
             src={`${personajeData.thumbnail.path}.${personajeData.thumbnail.extension}`}
             alt="personaje"
           ></img>

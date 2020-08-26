@@ -1,6 +1,4 @@
 import React from 'react';
-import styles from '../styles/comic.module.scss';
-import '../styles/styles.css';
 import { connect } from 'react-redux';
 
 const Comic = ({ currentComic, isLightTheme, themes }) => {
@@ -9,19 +7,19 @@ const Comic = ({ currentComic, isLightTheme, themes }) => {
   
   return (
     
-    <div className={styles.comicListContainer}>
+    <div className="comicListContainer">
       
             <div>
               <img
                 src={img}
-                className={styles.imagenComic}
+                className="imagenComic"
                 alt="imagen comic"
               ></img>
             </div>
         
             <div
               style={{ color: theme.letter, fontWeight: theme.weight }}
-              className={styles.comicCharacter}
+              className="comicCharacter"
             >
               *{currentComic.title}
             </div>

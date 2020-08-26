@@ -2,14 +2,18 @@ import {
   GET_CHARACTER,
   GET_COMIC,
   TOGGLE_FAVLIST,
-  ADD_FAV,
-  REMOVE_FAV,
+  TOGGLE_FAVCH,
   CLEAN_CHARACTER,
   CLEAN_COMICS,
   TOGGLE_THEME,
   SET_LOADING,
+  ADD_CURRENT,
+  CLEAR_CURRENT,
+  ADD_COMMENT,
+  GET_COMMENTS,
 } from './types';
 import axios from 'axios';
+import { setAlert } from './alert';
 
 export const getCharacter = (query) => async (dispatch) => {
   if (query) {
@@ -56,19 +60,7 @@ export const cleanComicData = () => {
   };
 };
 
-export const addFavList = (ch, im, id) => {
-  const data = {
-    ch,
-    im,
-    id,
-  };
-  return {
-    type: ADD_FAV,
-    payload: data,
-  };
-};
-
-export const removeFavList = (ch, im, id) => {
+export const toggleFavCharacter = (ch, im, id) => {
   const data = {
     ch,
     im,
@@ -76,7 +68,7 @@ export const removeFavList = (ch, im, id) => {
   };
 
   return {
-    type: REMOVE_FAV,
+    type: TOGGLE_FAVCH,
     payload: data,
   };
 };
@@ -93,8 +85,65 @@ export const toggleTheme = () => {
   };
 };
 
+export const addCurrent = (data) => {
+  return {
+    type: ADD_CURRENT,
+    payload: data,
+  };
+};
+
+export const clearCurrent = () => {
+  return {
+    type: CLEAR_CURRENT,
+  };
+};
+
 export const setLoading = () => {
   return {
     type: SET_LOADING,
   };
+};
+
+// Get Comments by Profile
+
+export const getComments = (id) => async (dispatch) => {
+  try {
+    const res = await axios.get(`/api/comments/${id}`);
+
+    dispatch({
+      type: GET_COMMENTS,
+      payload: res.data,
+    });
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+// Add Comment
+
+export const addComment = (id, commentForm, comments) => async (dispatch) => {
+  try {
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const res = await axios.post(`/api/comments/${id}`, commentForm, config);
+
+    dispatch({
+      type: ADD_COMMENT,
+      payload: res.data,
+    });
+
+    const resGet = await axios.get(`/api/comments/${id}`, commentForm, config);
+
+    dispatch({
+      type: GET_COMMENTS,
+      payload: resGet.data,
+    });
+
+    dispatch(setAlert('Comment Added!', 'success'));
+  } catch (error) {
+    console.error(error);
+  }
 };

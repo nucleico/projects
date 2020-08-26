@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import Comic from './Comic';
-import styles from '../styles/comiclist.module.scss';
 import Pagination from './Pagination';
-import Spinner from './Spinner';
+import Spinner from '../layout/Spinner';
 import { motion } from 'framer-motion';
 import { connect } from 'react-redux';
 import { AnimatePresence } from 'framer-motion';
-import { cleanComicData } from '../actions/dataActions';
+import { cleanComicData } from '../../actions/dataActions';
 
 const ComicList = ({
   comicData,
@@ -41,17 +40,17 @@ const ComicList = ({
             transition={{ duration: 0.5 }}
             exit={{ opacity: 0 }}
             style={{ backgroundColor: theme.comicBack }}
-            className={styles.comicContainer}
+            className="comicContainer"
           >
             <h2
               style={{ color: theme.letter, fontWeight: theme.weight }}
-              className={styles.comicWord}
+              className="comicWord"
             >
               Comic Appeareances
             </h2>
             <button
               style={{ color: theme.letter }}
-              className={styles.xBtn}
+              className="xBtn"
               onClick={cleanComicData}
             >
               X
@@ -68,7 +67,7 @@ const ComicList = ({
             ) : (
               <h2
                 style={{ color: theme.letter, fontWeight: theme.weight }}
-                className={styles.noResultsComics}
+                className="noResultsComics"
               >
                 No comic appearances registered in the Marvel database!
               </h2>
