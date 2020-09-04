@@ -1,0 +1,18 @@
+.shotList {
+  margin-left: '20px';
+  font-family: 'Noto Sans JP', sans-serif;
+}
+
+.shotsTitle {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 35px;
+}
+
+.shotContainer:nth-child(odd) {
+  background-color: rgb(193, 193, 201);
+}
+
+.shotContainer:nth-child(even):hover,
+.shotContainer:nth-child(odd):hover {
+  background-color: rgb(88, 88, 100);
+}
