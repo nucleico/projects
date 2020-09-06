@@ -1,7 +1,11 @@
 import React from 'react'
+import { connect } from "react-redux"
 
-const NoPlayerSelected = () => {
-    return (
+const NoPlayerSelected = ({loading}) => {
+    if (loading) {
+      return ""
+     } else {
+       return (
         <div className="container" style={{width: "200%"}}>
         <div className="col s12 m6">
           <div className="card blue-grey darken-1">
@@ -12,6 +16,11 @@ const NoPlayerSelected = () => {
         </div>
       </div>
     )
+     } 
 }
 
-export default NoPlayerSelected
+const mapStateToProps = state => ({
+  loading: state.basket.loading
+})
+
+export default connect(mapStateToProps, null)(NoPlayerSelected)

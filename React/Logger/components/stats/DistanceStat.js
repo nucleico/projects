@@ -11,7 +11,7 @@ const DistanceStat = ({ statsToggle, currentPlayer }) => {
         x: {
          show: false,         
            },
-      y: {
+       y: {
         formatter: function(value) {
             return value + " mts"
         },

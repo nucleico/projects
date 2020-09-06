@@ -1,11 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { deleteShot, setCurrentPlayer } from '../../actions/basketActions';
+import M from 'materialize-css/dist/js/materialize.min.js';
 
 const ShotItem = ({ shot, deleteShot, currentPlayer, setCurrentPlayer }) => {
   const onDeleteHandler = () => {
     deleteShot(shot.id);   
     currentPlayer.length > 0 && shot.idShooter === currentPlayer[0].idShooter && setCurrentPlayer(shot.idShooter)  
+    M.toast({ html: 'Tiro borrado correctamente' });
   
   };
 

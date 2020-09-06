@@ -5,6 +5,8 @@ import {
   setStatsToggle,
   setCurrentPlayer,
 } from '../../actions/basketActions';
+import M from 'materialize-css/dist/js/materialize.min.js';
+
 
 const PlayerItem = ({
   player,
@@ -30,13 +32,16 @@ const PlayerItem = ({
           <a href="#!" className="secondary-content">
             <i
               onClick={statsHandler}
-              className="material-icons grey-text"
+              className="modal-close material-icons grey-text"
               title="Mostrar estadísticas"
             >
               insert_chart
             </i>
             <i
-              onClick={() => onDeleteHandler(player.id)}
+              onClick={() => {
+                onDeleteHandler(player.id)
+                M.toast({ html: 'Jugador borrado correctamente' });
+              }}
               className="material-icons grey-text"
               title="Borrar jugador"
             >

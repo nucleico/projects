@@ -29,14 +29,19 @@ const App = () => {
         <PlayerListModal />
       </div>
       <div className="container">
-      <div className="row"> 
-      <div className="col s6"> <PositionDonut /></div>
-      <div className="col s6">  <ScoredDonut/></div> 
-      <div className="row"> 
-      <div className="col s6"> <DistanceStat /></div>
-      </div>   
-      </div> 
-      
+        <div className="row">
+          <div className="col s6">            
+            <PositionDonut />
+          </div>
+          <div className="col s6">            
+            <ScoredDonut />
+          </div>
+          <div className="row">
+            <div className="col s6">             
+              <DistanceStat />
+            </div>
+          </div>
+        </div>
       </div>
     </Provider>
   );

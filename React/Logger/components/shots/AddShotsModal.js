@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addShot, setCurrentPlayer } from '../../actions/basketActions';
+import M from "materialize-css/dist/js/materialize.min.js"
 
-const AddShotsModal = ({ addShot, players, setCurrentPlayer, currentPlayer }) => {
+const AddShotsModal = ({
+  addShot,
+  players,
+  setCurrentPlayer,
+  currentPlayer,
+}) => {
   const [shooter, setShooter] = useState('');
   const [distance, setDistance] = useState('');
   const [scored, setScored] = useState('');
@@ -10,33 +16,30 @@ const AddShotsModal = ({ addShot, players, setCurrentPlayer, currentPlayer }) =>
 
   const onSubmit = async (e) => {
     e.preventDefault();
-   
-      if (
-        shooter !== '' &&
-        distance !== '' &&
-        scored !== '' &&
-        position !== ''
-      ) {
-        const current = players.filter((pl) => pl.nombre === shooter);
 
-        let shot = {
-          shooter,
-          distance,
-          scored,
-          position,
-          idShooter: current[0].id,
-        };
+    if (shooter !== '' && distance !== '' && scored !== '' && position !== '') {
+      const current = players.filter((pl) => pl.nombre === shooter);
 
-        await addShot(shot);
-        setShooter('');
-        setDistance('');
-        setScored('');
-        setPosition('');
-        currentPlayer.length > 0 && shot.idShooter === currentPlayer[0].idShooter && setCurrentPlayer(shot.idShooter)  
-      } else {
-        alert('Complete todos los campos');
-      }
-    
+      let shot = {
+        shooter,
+        distance,
+        scored,
+        position,
+        idShooter: current[0].id,
+      };
+
+      await addShot(shot);
+      M.toast({ html: 'Tiro agregado correctamente' });
+      setShooter('');
+      setDistance('');
+      setScored('');
+      setPosition('');
+      currentPlayer.length > 0 &&
+        shot.idShooter === currentPlayer[0].idShooter &&
+        setCurrentPlayer(shot.idShooter);
+    } else {
+      alert('Complete todos los campos');
+    }
   };
 
   return (
@@ -137,7 +140,9 @@ const AddShotsModal = ({ addShot, players, setCurrentPlayer, currentPlayer }) =>
 
 const mapStateToProps = (state) => ({
   players: state.basket.players,
-  currentPlayer: state.basket.currentPlayerShots
+  currentPlayer: state.basket.currentPlayerShots,
 });
 
-export default connect(mapStateToProps, { addShot, setCurrentPlayer })(AddShotsModal);
+export default connect(mapStateToProps, { addShot, setCurrentPlayer })(
+  AddShotsModal
+);

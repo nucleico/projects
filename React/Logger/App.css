@@ -6,6 +6,7 @@
 .shotsTitle {
   font-family: 'Noto Sans JP', sans-serif;
   font-size: 35px;
+  line-height: 30px;
 }
 
 .shotContainer:nth-child(odd) {
@@ -15,4 +16,24 @@
 .shotContainer:nth-child(even):hover,
 .shotContainer:nth-child(odd):hover {
   background-color: rgb(88, 88, 100);
+  transition: all 0.6s ease;
+}
+
+.paginationUl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.li-items {
+  cursor: pointer;
+}
+
+.li-items:hover {
+  background-color: rgb(228, 207, 207);
+}
+
+.nba-logo {
+  width: 150px;
+  position: absolute;
 }

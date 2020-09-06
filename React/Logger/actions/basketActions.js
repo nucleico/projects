@@ -6,6 +6,7 @@ import {
   GET_DATA,
   TOGGLE_STATS,
   SET_CURRENT_PLAYER,
+  SET_LOADING,
 } from './types';
 
 import { db } from '../firebase';
@@ -89,5 +90,11 @@ export const setCurrentPlayer = (id) => {
   return {
     type: SET_CURRENT_PLAYER,
     payload: id,
+  };
+};
+
+export const setLoading = () => {
+  return {
+    type: SET_LOADING,
   };
 };

@@ -6,6 +6,7 @@ import {
   DELETE_SHOT,
   TOGGLE_STATS,
   SET_CURRENT_PLAYER,
+  SET_LOADING,
 } from '../actions/types';
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   players: [],
   statsToggle: false,
   currentPlayerShots: [],
+  loading: false,
 };
 
 export default (state = initialState, action) => {
@@ -22,6 +24,7 @@ export default (state = initialState, action) => {
         ...state,
         shots: action.payload.shots,
         players: action.payload.players,
+        loading: false,
       };
 
     case ADD_PLAYER:
@@ -59,7 +62,11 @@ export default (state = initialState, action) => {
           (shot) => shot.idShooter === action.payload
         ),
       };
-
+      case SET_LOADING:
+        return {
+          ...state,
+          loading: true,
+        };
     default:
       return state;
   }
