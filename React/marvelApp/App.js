@@ -13,7 +13,7 @@ const App = ({ isLightTheme, themes }) => {
   document.body.style.backgroundColor = theme.back;
 
   return (
-    <Fragment>
+    <Fragment> {/*sdf*/}
       <SearchBar />
       <CardList />
       <ComicList />
